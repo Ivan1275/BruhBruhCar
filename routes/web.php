@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use Inertia\Inertia;
+
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +23,10 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]); //Activa la verificación en las rutas para laravel/ui
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth','verified'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
+
+Route::get('/welcomereact', function () {
+    $user = new User();
+    $user->name = "Mr. Bean";
+    return Inertia::render('Welcome', ['user' => $user]);
+});
