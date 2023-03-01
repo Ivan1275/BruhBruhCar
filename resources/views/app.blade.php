@@ -2,9 +2,9 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    @routes
+    <!-- Todo el head con estilos -->
+    @include('layouts.partials.head')
+
     @viteReactRefresh
     @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
     @inertiaHead
@@ -12,6 +12,10 @@
 
 <body>
     @inertia
+
+    <!-- Bootstrap core JS-->
+    @include('layouts.partials.footerscripts')
+
 </body>
 
 </html>

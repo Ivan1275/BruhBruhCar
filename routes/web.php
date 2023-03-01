@@ -5,8 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Inertia\Inertia;
 
-use App\Models\User;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,15 +16,27 @@ use App\Models\User;
 |
 */
 
+// Ruta main
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Layouts/Guest');
 });
 
-Auth::routes(['verify' => true]); //Activa la verificación en las rutas para laravel/ui
-Route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
+//Activa la verificación en las rutas para laravel/ui
+Auth::routes(['verify' => true]); 
 
-Route::get('/welcomereact', function () {
-    $user = new User();
-    $user->name = "Mr. Bean";
-    return Inertia::render('Welcome', ['user' => $user]);
+
+// Rutas para Usarios SIN loguear
+Route::resource('travels', App\Http\Controllers\TravelController::class);
+
+
+// Rutas para Usarios que NO esten verificados
+Route::middleware('auth')->group(function () {
+
+});
+
+
+// Rutas para Usarios que SI esten verificados
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::resource('bookings', BookingController::class);
 });
