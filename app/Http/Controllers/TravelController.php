@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Travel;
 use Illuminate\Http\Request;
+use App\Http\Requests\TravelForm;
+use Illuminate\Support\Facades\Auth;
 
 class TravelController extends Controller
 {
@@ -33,9 +36,13 @@ class TravelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TravelForm $request)
     {
-        //
+        $travel = new Travel();
+        $travel->user_id = Auth::id();
+
+        $request->merge(['user_id' => Auth::id()]);
+        Travel::create($request->all());
     }
 
     /**
