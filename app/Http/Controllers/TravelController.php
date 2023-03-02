@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Travel;
 use Illuminate\Http\Request;
 use App\Http\Requests\TravelForm;
@@ -17,7 +16,8 @@ class TravelController extends Controller
      */
     public function index()
     {
-        //
+        $travels = Travel::paginate(25);
+        return view('/travels', compact('travels'));
     }
 
     /**
@@ -38,11 +38,9 @@ class TravelController extends Controller
      */
     public function store(TravelForm $request)
     {
-        $travel = new Travel();
-        $travel->user_id = Auth::id();
-
         $request->merge(['user_id' => Auth::id()]);
         Travel::create($request->all());
+        return back();
     }
 
     /**

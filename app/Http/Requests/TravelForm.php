@@ -24,11 +24,11 @@ class TravelForm extends FormRequest
     public function rules()
     {
         return [
-            'origin' => 'required',
-            'destination' => 'required',
+            'origin' => 'required|max:45', // max 45 caracteres
+            'destination' => 'required|max:45', // max 45 caracteres
             'date' => 'required',
             'hour' => 'required',
-            'seats' => 'required',
+            'seats' => 'required|gt:0', // el numero de asientos debe ser mayor a 0
         ];
     }
 }
