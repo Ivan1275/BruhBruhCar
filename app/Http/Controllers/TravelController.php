@@ -40,7 +40,7 @@ class TravelController extends Controller
     {
         $request->merge(['user_id' => Auth::id()]);
         Travel::create($request->all());
-        return back();
+        return $this->index();
     }
 
     /**

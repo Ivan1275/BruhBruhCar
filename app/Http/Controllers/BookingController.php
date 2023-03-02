@@ -51,7 +51,7 @@ class BookingController extends Controller
         } else {
             $booking->save();
         }
-        return back();
+        return view('travels');
     }
 
     /**

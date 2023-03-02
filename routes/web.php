@@ -31,7 +31,7 @@ Route::get('/travel', function () {
 
 Route::get('/travels', [TravelController::class, 'index']);
 
-Route::post('/addtravel', [TravelController::class, 'store']);
+Route::post('/addtravel', [TravelController::class, 'store'])->middleware('auth');
 Route::post('/reservas/{travel}', [BookingController::class, 'store']);
 
 Auth::routes(['verify' => true]); //Activa la verificación en las rutas para laravel/ui

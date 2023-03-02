@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    @if (count($travels) > 0)
+    @if ($travels && count($travels) > 0)
     <ul>
         @foreach ($travels as $travel)
         <li>
