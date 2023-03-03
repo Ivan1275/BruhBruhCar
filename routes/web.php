@@ -42,8 +42,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Rutas de Travels
     Route::get('/travels', [TravelController::class, 'index']);
     Route::get('/travels/{id}', [TravelController::class, 'show']);
-    Route::get('/newtravel', [TravelController::class, 'create']);
-    Route::post('/newtravel', [TravelController::class, 'store']);
+    Route::get('/new-travel', [TravelController::class, 'create']);
+    Route::post('/new-travel', [TravelController::class, 'store']);
     
     // Rutas de Bookings
     Route::get('/bookings', [TravelController::class, 'create']);

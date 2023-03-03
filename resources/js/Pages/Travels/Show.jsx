@@ -8,8 +8,9 @@ En lugar de volver a hacer la petición a Laravel y devolver la info */
 
 export default function Show() {
   const { travel } = usePage().props;
+  const { user } = usePage().props;
   const { post } = useForm({ //Para poder pasarle el travel id y descontar un asiento
-    travel_id: travel.id,
+    travelId: travel.id,
     travelSeats: travel.seats
   })
 
@@ -24,25 +25,31 @@ export default function Show() {
       <Navigation />
       <Container>
         <Card className='shadow'>
-          <Card.Header as="h4" className="p-3 mb-5 rounded"><i class="bi bi-calendar-check p-3"></i> Check the data and confirm your booking !
+          <Card.Header as="h4" className="p-3 mb- rounded"><i class="bi bi-calendar-check p-3"></i> Check the data and confirm your booking !
           </Card.Header>
 
           <Card.Body>
             <div className="row no-gutters">
               <div className="col-md-6">
                 <Card.Body>
-                  <Card.Title>{travel.origin}<i className="bi bi-arrow-right"></i> {travel.destination} </Card.Title>
-                  <Card.Title>{new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
-                  <Card.Title>hey bro <i className="bi bi-arrow-right"></i> hey bro </Card.Title>
+                  <Card.Title>Route: {travel.origin}<i className="bi bi-arrow-right"></i> {travel.destination} </Card.Title>
+                  <Card.Title>Date: {new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
                   <Card.Text>
-                    <i class="bi bi-hourglass-split"></i>
+                    <i class="bi bi-hourglass-split pe-3"></i>
+                    {travel.hour}
                     {/* <Moment diff={travel.dtime} unit="seconds" to={travel.atime} */}
+                  </Card.Text>
+                  <Card.Text>
+                    <i className="bi bi-person-circle pe-3"></i>
+                    <Link href="#">
+                      {user.name}
+                    </Link>
                   </Card.Text>
 
                   <form onSubmit={submit}>
                     <input
                       type="hidden"
-                      name="travel_id"
+                      name="travelId"
                       value={travel.id}
                     />
                     <Button variant="primary" type="submit">Confirm</Button>
@@ -51,7 +58,7 @@ export default function Show() {
               </div>
               <div className="col-md-6">
                 <Card.Body className='text-end'>
-                  <Card.Title >{travel.price}€</Card.Title>
+                  <Card.Title >{Number.parseFloat(travel.price).toFixed(2)} €</Card.Title>
                   <Card.Text>Total amount for 1 passenger</Card.Text>
                 </Card.Body>
               </div>

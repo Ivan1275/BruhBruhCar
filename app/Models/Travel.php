@@ -17,7 +17,8 @@ class Travel extends Model
         'destination',
         'date',
         'hour',
-        'seats'
+        'seats',
+        'price'
     ];
 
     public function user()

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('date');
             $table->time('hour');
             $table->tinyInteger('seats')->unsigned();
+            $table->double('price')->unsigned();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

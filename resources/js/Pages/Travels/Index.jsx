@@ -18,20 +18,19 @@ export default function Index() {
     <>
       <Navigation />
 
-      <div className="container position-relative">
+      <div className="container position-relative mb-4 mt-4">
         <div className="row justify-content-center">
           <Row xs={1} md={2} className="g-4">
             {travels.length ? (
               travels.map(travel => (
                 <Col>
                   <Card className='shadow'>
-                    <Card.Header as="h4" className="p-3 mb-5 rounded">{travel.origin} <i className="bi bi-arrow-right"></i> {travel.destination}</Card.Header>
+                    <Card.Header as="h4" className="p-3 rounded">{travel.origin} <i className="bi bi-arrow-right"></i> {travel.destination}</Card.Header>
                     <Card.Body>
                       <div className="row no-gutters">
                         <div className="col-md-6">
                           <Card.Body>
                             <Card.Title>{new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
-                            <Card.Title>hey bro <i className="bi bi-arrow-right"></i> hey bro </Card.Title>
                             <Card.Text>
                               <i className="bi bi-hourglass-split"></i>                              {/* <Moment diff={travel.dtime} unit="seconds" to={travel.atime} */}
                             </Card.Text>
