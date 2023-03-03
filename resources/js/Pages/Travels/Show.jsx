@@ -9,13 +9,14 @@ En lugar de volver a hacer la petición a Laravel y devolver la info */
 export default function Show() {
   const { travel } = usePage().props;
   const { post } = useForm({ //Para poder pasarle el travel id y descontar un asiento
-    travelId: travel.id,
+    travel_id: travel.id,
     travelSeats: travel.seats
   })
 
   function submit(e) {
     e.preventDefault()
-    post('/bookings')
+    // console.log(e);
+    post('/bookings', travel)
   }
 
   return (
@@ -32,7 +33,7 @@ export default function Show() {
                 <Card.Body>
                   <Card.Title>{travel.origin}<i className="bi bi-arrow-right"></i> {travel.destination} </Card.Title>
                   <Card.Title>{new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
-                  <Card.Title>{travel.dtime.substring(0, 5)} <i className="bi bi-arrow-right"></i> {travel.atime.substring(0, 5)} </Card.Title>
+                  <Card.Title>hey bro <i className="bi bi-arrow-right"></i> hey bro </Card.Title>
                   <Card.Text>
                     <i class="bi bi-hourglass-split"></i>
                     {/* <Moment diff={travel.dtime} unit="seconds" to={travel.atime} */}
@@ -41,7 +42,7 @@ export default function Show() {
                   <form onSubmit={submit}>
                     <input
                       type="hidden"
-                      name="travelId"
+                      name="travel_id"
                       value={travel.id}
                     />
                     <Button variant="primary" type="submit">Confirm</Button>

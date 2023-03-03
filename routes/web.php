@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TravelController;
+use App\Http\Controllers\BookingController;
 use Inertia\Inertia;
 
 /*
@@ -40,8 +41,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Rutas de Travels
     Route::get('/travels', [TravelController::class, 'index']);
+    Route::get('/travels/{id}', [TravelController::class, 'show']);
     Route::get('/newtravel', [TravelController::class, 'create']);
     Route::post('/newtravel', [TravelController::class, 'store']);
     
-    Route::resource('bookings', BookingController::class);
+    // Rutas de Bookings
+    Route::get('/bookings', [TravelController::class, 'create']);
+    Route::post('/bookings', [BookingController::class, 'store']);
 });

@@ -33,7 +33,7 @@ export default function Index() {
                             <Card.Title>{new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
                             <Card.Title>hey bro <i className="bi bi-arrow-right"></i> hey bro </Card.Title>
                             <Card.Text>
-                              <i class="bi bi-hourglass-split"></i>                              {/* <Moment diff={travel.dtime} unit="seconds" to={travel.atime} */}
+                              <i className="bi bi-hourglass-split"></i>                              {/* <Moment diff={travel.dtime} unit="seconds" to={travel.atime} */}
                             </Card.Text>
                             <Card.Text>
                               <i className="bi bi-people pe-3" title="Available seats" />

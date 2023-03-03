@@ -37,7 +37,9 @@ class BookingController extends Controller
      */
     public function store(Travel $travel)
     {
-         // Busca el primer modelo que coincida con las restricciones
+        dd($travel->id);
+        die();
+        // Busca el primer modelo que coincida con las restricciones
          $booking = Booking::firstOrNew([
             'user_id' => Auth::id(),
             'travel_id' => $travel->id
@@ -54,6 +56,20 @@ class BookingController extends Controller
         
         // Aqui va el redirect con inertia
         // return view('travels');
+
+        // Jesus
+        //Guardar reserva
+        // $booking = new Booking;
+        // $booking->user_id = Auth::id();
+        // $booking->travel_id = $travel->travelId;
+        // $booking->save();
+
+        // //Restar una plaza a los asientos disponibles
+        // $travel = Travel::find($travel->travelId);
+        // $travel->seats = $travel->seats - 1;
+        // $travel->save();
+
+        return redirect('/home');
     }
 
     /**
