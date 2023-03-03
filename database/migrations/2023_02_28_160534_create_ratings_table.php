@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user1_id')->unsigned();
             $table->bigInteger('user2_id')->unsigned();
-            $table->integer('score')->unsigned();
+            $table->smallInteger('score')->unsigned();
             $table->text('comment');
             $table->timestamps();
 
