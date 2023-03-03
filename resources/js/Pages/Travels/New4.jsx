@@ -7,12 +7,12 @@ export default function New3(props) {
 
     
     const [values, setForm] = useState({
+        user_id: auth.user.id,
         origin: "",
         destination: "",
         date: "",
         hour: "",
-        seats: "",
-        user_id: auth.user.id
+        seats: ""
     })
 
     function handleChange(e) {

@@ -18,7 +18,7 @@ export default function Navigation() {
           <Nav className="ms-auto">
             <Nav.Link href="/" className="mx-2 bi bi-house"> Home</Nav.Link>
             <Nav.Link href="/" className="mx-2 bi bi-search"> Search</Nav.Link>
-            <Nav.Link href="/" className="mx-2 bi bi-car-front"> Publish a ride</Nav.Link>
+            <Nav.Link href="/newtravel" className="mx-2 bi bi-car-front"> Publish a ride</Nav.Link>
             {auth.user == null &&
               <>
                 <Nav.Link href="/login" className="mx-2 bi bi-door-open"> Log in</Nav.Link>
