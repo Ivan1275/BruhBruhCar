@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TravelController;
 use Inertia\Inertia;
 
 /*
@@ -24,7 +25,7 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]); //Activa la verificación en las rutas para laravel/ui
 
 // Rutas para Usarios SIN loguear
-Route::resource('travels', App\Http\Controllers\TravelController::class);
+Route::resource('travels', TravelController::class);
 
 
 // Rutas para Usarios que NO esten verificados
@@ -38,9 +39,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     // Rutas de Travels
-    Route::get('/travels', [App\Http\Controllers\TravelController::class, 'index']);
-    Route::get('/newtravel', [App\Http\Controllers\TravelController::class, 'create']);
-    Route::post('/newtravel', [App\Http\Controllers\TravelController::class, 'store']);
+    Route::get('/travels', [TravelController::class, 'index']);
+    Route::get('/newtravel', [TravelController::class, 'create']);
+    Route::post('/newtravel', [TravelController::class, 'store']);
     
     Route::resource('bookings', BookingController::class);
 });
