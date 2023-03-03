@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\TravelForm;
 use Inertia\Inertia;
 
 class TravelController extends Controller
@@ -51,9 +52,13 @@ class TravelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TravelForm $request)
     {
-        var_dump($request);
+        $request->merge(['user_id' => Auth::id()]);
+        Travel::create($request->all());
+
+        // Aqui iria el redirect con inertia
+        // return $this->index();
     }
 
     /**

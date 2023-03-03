@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Travel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -33,9 +35,25 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Travel $travel)
     {
-        //
+         // Busca el primer modelo que coincida con las restricciones
+         $booking = Booking::firstOrNew([
+            'user_id' => Auth::id(),
+            'travel_id' => $travel->id
+        ]);
+
+        // Si existe, lo borra (cancelar reserva)
+        if ($booking->id) {
+            $booking->delete();
+
+        // Si no, lo crea (reserva guardada)
+        } else {
+            $booking->save();
+        }
+        
+        // Aqui va el redirect con inertia
+        // return view('travels');
     }
 
     /**

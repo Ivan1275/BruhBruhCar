@@ -12,7 +12,12 @@ class Travel extends Model
     protected $table = 'travels';
     
     protected $fillable = [
-        'user_id', 'origin', 'destination', 'date', 'hour', 'seats'
+        'user_id',
+        'origin',
+        'destination',
+        'date',
+        'hour',
+        'seats'
     ];
 
     public function user()

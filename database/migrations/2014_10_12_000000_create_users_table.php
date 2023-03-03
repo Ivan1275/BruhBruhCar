@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -15,8 +16,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('email', 255)->unique();
+            $table->string('name', 20);
+            $table->string('email', 45)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 60);
             $table->boolean('admin')->default(0);
