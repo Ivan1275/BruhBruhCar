@@ -1,11 +1,15 @@
+// React
 import { Link, usePage } from '@inertiajs/react';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import { Button } from 'react-bootstrap';
+
+// Components
 import Navigation from '../Layouts/Components/Navigation';
 import Footer from '../Layouts/Components/Footer';
 import SearchForm from '../Layouts/Components/SearchForm';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+
 
 export default function Index() {
   const { travels } = usePage().props;
@@ -27,7 +31,7 @@ export default function Index() {
                         <div className="col-md-6">
                           <Card.Body>
                             <Card.Title>{new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
-                            <Card.Title>{travel.dtime.substring(0, 5)} <i className="bi bi-arrow-right"></i> {travel.atime.substring(0, 5)} </Card.Title>
+                            <Card.Title>hey bro <i className="bi bi-arrow-right"></i> hey bro </Card.Title>
                             <Card.Text>
                               <i class="bi bi-hourglass-split"></i>                              {/* <Moment diff={travel.dtime} unit="seconds" to={travel.atime} */}
                             </Card.Text>

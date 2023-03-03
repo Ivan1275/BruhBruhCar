@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Travel;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Inertia\Inertia;
 
 class TravelController extends Controller
 {
@@ -14,7 +19,10 @@ class TravelController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $travels = Travel::with('user')->get(); //->paginate(6)
+        return Inertia::render('Travels/Index', ['travels' => $travels, 'user' => $user]);
+            
     }
 
     /**
@@ -24,7 +32,17 @@ class TravelController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Travels/New4');
+
+        // $this->validate($request, [
+        //     'email' => 'required',
+        //     'password' => 'required'
+        // ]);
+
+        // request()->merge(['user_id' => Auth::id()]);
+        
+        // Travel::create($request->all());
+        // return Inertia::render('Travels/New');
     }
 
     /**
@@ -35,7 +53,7 @@ class TravelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        var_dump($request);
     }
 
     /**
@@ -46,7 +64,7 @@ class TravelController extends Controller
      */
     public function show(Travel $travel)
     {
-        //
+        return Inertia::render('Travels/Show', ['travel' => $travel]);
     }
 
     /**

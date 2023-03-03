@@ -21,9 +21,7 @@ Route::get('/', function () {
     return Inertia::render('Layouts/Guest');
 });
 
-//Activa la verificación en las rutas para laravel/ui
-Auth::routes(['verify' => true]); 
-
+Auth::routes(['verify' => true]); //Activa la verificación en las rutas para laravel/ui
 
 // Rutas para Usarios SIN loguear
 Route::resource('travels', App\Http\Controllers\TravelController::class);
@@ -38,5 +36,11 @@ Route::middleware('auth')->group(function () {
 // Rutas para Usarios que SI esten verificados
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    // Rutas de Travels
+    Route::get('/travels', [App\Http\Controllers\TravelController::class, 'index']);
+    Route::get('/newtravel', [App\Http\Controllers\TravelController::class, 'create']);
+    Route::post('/newtravel', [App\Http\Controllers\TravelController::class, 'store']);
+    
     Route::resource('bookings', BookingController::class);
 });
