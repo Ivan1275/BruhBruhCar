@@ -20,10 +20,8 @@ class TravelController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $travels = Travel::with('user')->get(); //->paginate(6)
-        return Inertia::render('Travels/Index', ['travels' => $travels, 'user' => $user]);
-            
+        $travels = Travel::with('user')->get();
+        return Inertia::render('Travels/Index', ['travels' => $travels]);
     }
 
     /**
@@ -54,7 +52,6 @@ class TravelController extends Controller
      */
     public function store(TravelForm $request)
     {
-        $request->merge(['user_id' => Auth::id()]);
         Travel::create($request->all());
 
         // Aqui iria el redirect con inertia
@@ -69,7 +66,8 @@ class TravelController extends Controller
      */
     public function show(Travel $travel)
     {
-        return Inertia::render('Travels/Show', ['travel' => $travel]);
+        $user = $travel->user;
+        return Inertia::render('Travels/Show', ['travel' => $travel, 'user' => $user]);
     }
 
     /**

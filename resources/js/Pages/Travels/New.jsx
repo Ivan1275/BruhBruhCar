@@ -17,7 +17,8 @@ export default function New3(props) {
         destination: "",
         date: "",
         hour: "",
-        seats: ""
+        seats: "",
+        price: ""
     })
 
     function handleChange(e) {
@@ -94,6 +95,16 @@ export default function New3(props) {
                                     <div className="col-md-6">
                                         <input id="seats" value={values.seats} onChange={handleChange} type="number" className="form-control" name="seats"  autoComplete="seats" />
                                         {errors.seats && <div><strong>{errors.seats}</strong></div>}
+                                    </div>
+                                </div>
+
+                                <div className="row mb-3">
+                                    <label htmlFor="price" className="col-md-4 col-form-label text-md-end">Precio</label>
+
+
+                                    <div className="col-md-6">
+                                        <input id="price" value={values.price} onChange={handleChange} type="number" className="form-control" name="price"  autoComplete="price" />
+                                        {errors.price && <div><strong>{errors.price}</strong></div>}
                                     </div>
                                 </div>
 

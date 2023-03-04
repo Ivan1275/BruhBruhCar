@@ -58,7 +58,7 @@ export default function Show() {
               </div>
               <div className="col-md-6">
                 <Card.Body className='text-end'>
-                  <Card.Title >{Number.parseFloat(travel.price).toFixed(2)} €</Card.Title>
+                  <Card.Title >{travel.price} €</Card.Title>
                   <Card.Text>Total amount for 1 passenger</Card.Text>
                 </Card.Body>
               </div>

@@ -27,7 +27,7 @@ export default function Index() {
                 <Col>
                   <Card className='shadow'>
                     <Card.Header as="h4" className="p-3 rounded">{travel.origin} <i className="bi bi-arrow-right"></i> {travel.destination}</Card.Header>
-                    
+
                     <Card.Body>
                       <div className="row no-gutters">
                         <div className="col-md-6">
@@ -63,7 +63,7 @@ export default function Index() {
                         </div>
                       </div>
                     </Card.Body>
-                    
+
                   </Card >
                 </Col>
 
