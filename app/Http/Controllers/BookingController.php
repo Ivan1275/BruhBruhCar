@@ -37,34 +37,8 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        // Busca el primer modelo que coincida con las restricciones
-        $booking = Booking::firstOrNew([
-            'user_id' => Auth::id(),
-            'travel_id' => $request->travelId
-        ]);
-
-        $travel = Travel::find($request->travelId);
-
-        // Si existe una reserva
-        if ($booking->id) {
-
-            // Cancela la reserva
-            $booking->delete();
-
-            // Sumo una plaza a los asientos disponibles 
-            $travel->seats = $travel->seats + 1;
-            $travel->save();
-
-        // Si no, 
-        } else {
-
-            // crea la reserva
-            $booking->save();
-
-            // Resto una plaza a los asientos disponibles
-            $travel->seats = $travel->seats - 1;
-            $travel->save();
-        }
+        $booking = new Booking;
+        $booking->bookingManage($request);
 
         return redirect('/travels');
     }

@@ -20,7 +20,11 @@ class TravelController extends Controller
      */
     public function index()
     {
-        $travels = Travel::with('user')->get();
+        $travels = Travel::with('user')
+            ->orderBy('date', 'asc')
+            ->latest('updated_at')
+            ->get();
+
         return Inertia::render('Travels/Index', ['travels' => $travels]);
     }
 
@@ -39,7 +43,7 @@ class TravelController extends Controller
         // ]);
 
         // request()->merge(['user_id' => Auth::id()]);
-        
+
         // Travel::create($request->all());
         // return Inertia::render('Travels/New');
     }
