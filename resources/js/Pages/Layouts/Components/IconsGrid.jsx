@@ -6,22 +6,22 @@ export default function IconsGrid() {
             <div className="col-lg-4">
               <div className="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                 <div className="features-icons-icon d-flex"><i className="bi bi-search m-auto text-primary" /></div>
-                <h3>Search a ride</h3>
-                <p className="lead mb-0">Pick your ride simply saying your heading and leaving points with desired time</p>
+                <h3>Busca un viaje</h3>
+                <p className="lead mb-0">Escoge tu viaje indicando la localidad de origen, el destino, la fecha y el número de plazas</p>
               </div>
             </div>
             <div className="col-lg-4">
               <div className="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                 <div className="features-icons-icon d-flex"><i className="bi bi-calendar2-check m-auto text-primary" /></div>
-                <h3>Book your ride</h3>
-                <p className="lead mb-0">Book your ride at one tap and you can communicate with drivers for detailed info</p>
+                <h3>Resérvalo</h3>
+                <p className="lead mb-0">Reserva tu viaje mediante un simple click y comunícate con el conductor para los detalles de tu reserva</p>
               </div>
             </div>
             <div className="col-lg-4">
               <div className="features-icons-item mx-auto mb-0 mb-lg-3">
                 <div className="features-icons-icon d-flex"><i className="bi bi-car-front m-auto text-primary" /></div>
-                <h3>Travel together</h3>
-                <p className="lead mb-0">Enjoy your ride and rate your ride experience</p>
+                <h3>Viajar acompañado</h3>
+                <p className="lead mb-0">Disfruta del viaje y valora tu experiencia</p>
               </div>
             </div>
           </div>

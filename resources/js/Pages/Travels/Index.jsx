@@ -19,13 +19,15 @@ export default function Index() {
       <Navigation />
 
       <div className="container position-relative mb-4 mt-4">
+        <SearchForm />
         <div className="row justify-content-center">
-          <Row xs={1} md={2} className="g-4">
+          <Row xs={1} md={2} className="g-2">
             {travels.length ? (
               travels.map(travel => (
                 <Col>
                   <Card className='shadow'>
                     <Card.Header as="h4" className="p-3 rounded">{travel.origin} <i className="bi bi-arrow-right"></i> {travel.destination}</Card.Header>
+                    
                     <Card.Body>
                       <div className="row no-gutters">
                         <div className="col-md-6">
@@ -61,6 +63,7 @@ export default function Index() {
                         </div>
                       </div>
                     </Card.Body>
+                    
                   </Card >
                 </Col>
 

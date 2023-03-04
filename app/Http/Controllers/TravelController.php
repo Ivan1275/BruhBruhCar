@@ -33,7 +33,7 @@ class TravelController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Travels/New4');
+        return Inertia::render('Travels/New');
 
         // $this->validate($request, [
         //     'email' => 'required',

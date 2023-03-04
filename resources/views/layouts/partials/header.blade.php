@@ -4,40 +4,40 @@
             <div class="col-xl-10">
                 <div class="text-center text-white">
                     <!-- Page heading-->
-                    <h1 class="mb-5">{{ __('Where do you want to go?') }}</h1>
+                    <h1 class="mb-5">{{ __('¿A dónde quieres ir?') }}</h1>
 
                     <form class="form-subscribe" id="contactForm">
                         <div class="row">
                             <!-- Departure -->
                             <div class="col" style="flex:1.5 0 0%">
                                 <input class="form-control form-control-lg" id="departure" name="departure"
-                                    type="text" placeholder="{{ __('Leaving from') }}" />
+                                    type="text" placeholder="{{ __('Origen') }}" />
                                 <div class="invalid-feedback text-white">
-                                    {{ __('Departure is required.') }}</div>
+                                    {{ __('Origen es requerido.') }}</div>
                                 <div class="invalid-feedback text-white">
-                                    {{ __('Departure is not valid.') }}</div>
+                                    {{ __('Origen no es vaĺido.') }}</div>
                             </div>
                             <!-- Destination -->
                             <div class="col" style="flex:1.5 0 0%">
                                 <input class="form-control form-control-lg" id="destination" name="destination"
-                                    type="text" placeholder="{{ __('Going to') }}" />
+                                    type="text" placeholder="{{ __('Destino') }}" />
                                 <div class="invalid-feedback text-white">
-                                    {{ __('Destination is required.') }}</div>
+                                    {{ __('Destino es requerido.') }}</div>
                                 <div class="invalid-feedback text-white">
-                                    {{ __('Destination is not valid.') }}</div>
+                                    {{ __('Destino no es vaĺido.') }}</div>
                             </div>
                             <!-- Date-->
                             <div class="col" style="flex:1 0 0%">
                                 <input class="form-control form-control-lg" id="date" name="date"
                                     type="date" />
                                 <div class="invalid-feedback text-white">
-                                    {{ __('Date is required.') }}</div>
+                                    {{ __('Fecha requerida.') }}</div>
                                 <div class="invalid-feedback text-white">
-                                    {{ __('Date is not valid.') }}</div>
+                                    {{ __('La fecha no es válida.') }}</div>
                             </div>
 
                             <div class="col-auto"><button class="btn btn-primary btn-lg disabled" id="submitButton"
-                                    type="submit">{{ __('Submit') }}</button></div>
+                                    type="submit">{{ __('Enviar') }}</button></div>
 
                         </div>
 

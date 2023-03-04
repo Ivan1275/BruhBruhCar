@@ -5,11 +5,11 @@
                 <ul class="list-inline mb-2">
                     <li class="list-inline-item"><a href="#!">{{__('About')}}</a></li>
                     <li class="list-inline-item">⋅</li>
-                    <li class="list-inline-item"><a href="#!">{{__('Contact')}}</a></li>
+                    <li class="list-inline-item"><a href="#!">{{__('Contacto')}}</a></li>
                     <li class="list-inline-item">⋅</li>
-                    <li class="list-inline-item"><a href="#!">{{__('Terms of Use')}}</a></li>
+                    <li class="list-inline-item"><a href="#!">{{__('Términos de uso')}}</a></li>
                     <li class="list-inline-item">⋅</li>
-                    <li class="list-inline-item"><a href="#!">{{__('Privacy Policy')}}</a></li>
+                    <li class="list-inline-item"><a href="#!">{{__('Política de privacidad')}}</a></li>
                 </ul>
                 <p class="text-muted small mb-4 mb-lg-0">&copy; MoviFP 2023. {{__('All rights reserved.')}}</p>
             </div>

@@ -7,15 +7,15 @@ export default function Footer() {
         <div className="row">
           <div className="col-lg-6 h-100 text-center text-lg-start my-auto">
             <ul className="list-inline mb-2">
-              <li className="list-inline-item"><Link href="#!">About</Link></li>
+              <li className="list-inline-item"><Link href="#!">Quiénes somos</Link></li>
               <li className="list-inline-item">⋅</li>
-              <li className="list-inline-item"><Link href="#!">Contact</Link></li>
+              <li className="list-inline-item"><Link href="#!">Contacto</Link></li>
               <li className="list-inline-item">⋅</li>
-              <li className="list-inline-item"><Link href="#!">Terms of Use</Link></li>
+              <li className="list-inline-item"><Link href="#!">Términos de uso</Link></li>
               <li className="list-inline-item">⋅</li>
-              <li className="list-inline-item"><Link href="#!">Privacy Policy</Link></li>
+              <li className="list-inline-item"><Link href="#!">Política de privacidad</Link></li>
             </ul>
-            <p className="text-muted small mb-4 mb-lg-0">© MoviFP 2023. All rights reserved.</p>
+            <p className="text-muted small mb-4 mb-lg-0">© MoviFP 2023. Todos los derechos reservados.</p>
           </div>
           <div className="col-lg-6 h-100 text-center text-lg-end my-auto">
             <ul className="list-inline mb-0">

@@ -7,7 +7,7 @@ export default function Header() {
         <div className="row justify-content-center">
           <div className="col-xl-10">
             <div className="text-center text-white">
-              <h1 className="mb-5">Where do you want to go?</h1>
+              <h1 className="mb-5">¿A dónde quieres ir?</h1>
               <SearchForm />
             </div>
           </div>

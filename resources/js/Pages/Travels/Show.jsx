@@ -33,7 +33,7 @@ export default function Show() {
               <div className="col-md-6">
                 <Card.Body>
                   <Card.Title>Route: {travel.origin}<i className="bi bi-arrow-right"></i> {travel.destination} </Card.Title>
-                  <Card.Title>Date: {new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
+                  <Card.Title>Fecha: {new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
                   <Card.Text>
                     <i class="bi bi-hourglass-split pe-3"></i>
                     {travel.hour}

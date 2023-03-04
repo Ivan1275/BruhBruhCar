@@ -27,7 +27,7 @@ export default function SearchForm() {
             value={data.origin}
             name="origin"
             type="text"
-            placeholder="Departure"
+            placeholder="Origen"
             onChange={e => setData('origin', e.target.value)}
           />
           <span className="text-danger">
@@ -37,14 +37,14 @@ export default function SearchForm() {
 
         {/* Destination */}
         <div className="col" style={{ flex: '1.5 0 0%' }}>
-          {/*<label for="destination" className="form-label ">Going to...</label>*/}
+          {/*<label for="destination" className="form-label ">Destino...</label>*/}
           <input
             className="form-control form-control-lg"
             id="destination"
             value={data.destination}
             name="destination"
             type="text"
-            placeholder="Destination"
+            placeholder="Destino"
             onChange={e => setData('destination', e.target.value)}
           />
           <span className="text-danger">
@@ -67,7 +67,7 @@ export default function SearchForm() {
           </span>
         </div>
 
-        <div className="col-auto"><button className="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button></div>
+        <div className="col-auto"><button className="btn btn-primary btn-lg" id="submitButton" type="submit">Enviar</button></div>
       </div>
       <div className="row" style={{}}>
       </div>

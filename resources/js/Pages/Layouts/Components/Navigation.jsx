@@ -16,13 +16,13 @@ export default function Navigation() {
         <Navbar.Toggle aria-controls="navbar-dark-example" />
         <Navbar.Collapse id="navbar-dark-example">
           <Nav className="ms-auto">
-            <Nav.Link href="/" className="mx-2 bi bi-house"> Home</Nav.Link>
-            <Nav.Link href="/" className="mx-2 bi bi-search"> Search</Nav.Link>
-            <Nav.Link href="/newtravel" className="mx-2 bi bi-car-front"> Publish a ride</Nav.Link>
+            <Nav.Link href="/" className="mx-2 bi bi-house"> Inicio</Nav.Link>
+            <Nav.Link href="/travels" className="mx-2 bi bi-search"> Buscar</Nav.Link>
+            <Nav.Link href="/new-travel" className="mx-2 bi bi-car-front"> Publicar un viaje</Nav.Link>
             {auth.user == null &&
               <>
-                <Nav.Link href="/login" className="mx-2 bi bi-door-open"> Log in</Nav.Link>
-                <Nav.Link href="/register" className="mx-2 bi bi-check-circle"> Sign up</Nav.Link>
+                <Nav.Link href="/login" className="mx-2 bi bi-door-open"> Iniciar sesión</Nav.Link>
+                <Nav.Link href="/register" className="mx-2 bi bi-check-circle"> Registrarse</Nav.Link>
               </>
             }
             {auth.user != null &&
@@ -33,15 +33,15 @@ export default function Navigation() {
                 align="end"
                 className="mx-2"
               >
-                <NavDropdown.Item href="#"><i className='bi bi-car-front pe-3'></i>My rides</NavDropdown.Item>
-                <NavDropdown.Item href="#"><i className='bi bi-chat pe-3'></i>Messages</NavDropdown.Item>
-                <NavDropdown.Item href="#"><i className='bi bi-credit-card pe-3'></i>Payments</NavDropdown.Item>
-                <NavDropdown.Item href="#"><i className='bi bi-person-circle pe-3'></i>Profile</NavDropdown.Item>
+                <NavDropdown.Item href="#"><i className='bi bi-car-front pe-3'></i>Mis viajes</NavDropdown.Item>
+                <NavDropdown.Item href="#"><i className='bi bi-chat pe-3'></i>Mensajes</NavDropdown.Item>
+                <NavDropdown.Item href="#"><i className='bi bi-credit-card pe-3'></i>Pagos</NavDropdown.Item>
+                <NavDropdown.Item href="#"><i className='bi bi-person-circle pe-3'></i>Perfil</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
                   <Link href="/logout" method="post" as="NavDropDown.Item">
                     <i className='bi bi-door-closed pe-3'></i>
-                    Log out
+                    Cerrar sesión
                   </Link>
                 </NavDropdown.Item>
               </NavDropdown>
