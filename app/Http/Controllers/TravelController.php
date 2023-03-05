@@ -20,9 +20,9 @@ class TravelController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $travels = Travel::with('user')->get(); //->paginate(6)
-        return Inertia::render('Travels/Index', ['travels' => $travels, 'user' => $user]);
+        $travels = Travel::with('user')->orderBy('created_at', 'asc')->get(); //->paginate(6)
+        // dd($travels);
+        return Inertia::render('Travels/Index', ['travels' => $travels]);
             
     }
 
@@ -69,7 +69,9 @@ class TravelController extends Controller
      */
     public function show(Travel $travel)
     {
-        return Inertia::render('Travels/Show', ['travel' => $travel]);
+        // dd($travel);
+        $user = $travel->user;
+        return Inertia::render('Travels/Show', ['travel' => $travel, 'user' => $user]);
     }
 
     /**
@@ -104,5 +106,12 @@ class TravelController extends Controller
     public function destroy(Travel $travel)
     {
         //
+    }
+
+    public function personal()
+    {
+        $user_id = Auth::id();
+        $travels = Travel::with('user')->orderBy('created_at', 'asc')->where('user_id', $user_id)->get(); //->paginate(6)
+        return Inertia::render('Travels/Index', ['travels' => $travels]);
     }
 }

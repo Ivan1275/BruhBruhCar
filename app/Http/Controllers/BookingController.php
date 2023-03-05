@@ -35,14 +35,14 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Travel $travel)
+    public function store(Request $travel)
     {
-        dd($travel->id);
-        die();
+        // dd($travel);
+        // die();
         // Busca el primer modelo que coincida con las restricciones
          $booking = Booking::firstOrNew([
             'user_id' => Auth::id(),
-            'travel_id' => $travel->id
+            'travel_id' => $travel->travelId
         ]);
 
         // Si existe, lo borra (cancelar reserva)

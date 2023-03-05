@@ -21,7 +21,7 @@ export default function Index() {
       <div className="container position-relative mb-4 mt-4">
         <SearchForm />
         <div className="row justify-content-center">
-          <Row xs={1} md={2} className="g-2">
+          <Row xs={1} md={2} className="g-2 justify-content-center">
             {travels.length ? (
               travels.map(travel => (
                 <Col>
@@ -69,9 +69,8 @@ export default function Index() {
 
               ))) : (
               <>
-                <Col md="auto">
-                  <SearchForm />
-                  <div>No rides found. Try again!</div>
+                <Col className="m-3 pt-3 text-center">
+                  <h2>No rides found. Try again!</h2>
                 </Col>
               </>
             )}

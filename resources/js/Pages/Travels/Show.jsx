@@ -16,7 +16,7 @@ export default function Show() {
 
   function submit(e) {
     e.preventDefault()
-    // console.log(e);
+    console.log(travel);
     post('/bookings', travel)
   }
 
@@ -25,7 +25,7 @@ export default function Show() {
       <Navigation />
       <Container>
         <Card className='shadow'>
-          <Card.Header as="h4" className="p-3 mb- rounded"><i class="bi bi-calendar-check p-3"></i> Check the data and confirm your booking !
+          <Card.Header as="h4" className="p-3 mb- rounded"><i className="bi bi-calendar-check p-3"></i> Check the data and confirm your booking !
           </Card.Header>
 
           <Card.Body>
@@ -35,7 +35,7 @@ export default function Show() {
                   <Card.Title>Route: {travel.origin}<i className="bi bi-arrow-right"></i> {travel.destination} </Card.Title>
                   <Card.Title>Fecha: {new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
                   <Card.Text>
-                    <i class="bi bi-hourglass-split pe-3"></i>
+                    <i className="bi bi-hourglass-split pe-3"></i>
                     {travel.hour}
                     {/* <Moment diff={travel.dtime} unit="seconds" to={travel.atime} */}
                   </Card.Text>
@@ -58,7 +58,7 @@ export default function Show() {
               </div>
               <div className="col-md-6">
                 <Card.Body className='text-end'>
-                  <Card.Title >{Number.parseFloat(travel.price).toFixed(2)} €</Card.Title>
+                  <Card.Title >{travel.price} €</Card.Title>
                   <Card.Text>Total amount for 1 passenger</Card.Text>
                 </Card.Body>
               </div>
