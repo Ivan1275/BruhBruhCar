@@ -17,7 +17,7 @@ export default function Show() {
 
   function submit(e) {
     e.preventDefault()
-    // console.log(e);
+    console.log(travel);
     post('/bookings', travel)
   }
 
@@ -36,6 +36,7 @@ export default function Show() {
                 <Card.Body>
                   <Card.Title> Trayecto: {travel.origin}<i className="bi bi-arrow-right"></i> {travel.destination} </Card.Title>
                   <Card.Title>Fecha: {new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
+
                   <Card.Title>Horario</Card.Title>
                   <Card.Text>De salida: {travel.hour}</Card.Text>
                   <Card.Text>De llegada: --:-- </Card.Text>
@@ -66,7 +67,7 @@ export default function Show() {
               <div className="col-md-6">
                 <Card.Body className='text-end'>
                   <Card.Title >{travel.price} €</Card.Title>
-                  <Card.Text>Cantidad total para 1 pasajero</Card.Text>
+                  <Card.Text>Total amount for 1 passenger</Card.Text>
                 </Card.Body>
               </div>
             </div>

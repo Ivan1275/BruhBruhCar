@@ -7,7 +7,7 @@ import { Button, Card, Container, Form, Row } from "react-bootstrap"
 import Navigation from './Components/Navigation';
 import Footer from './Components/Footer';
 
-export default function Register() {
+export default function LogIn() {
   const { errors } = usePage().props;
 
     
