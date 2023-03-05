@@ -35,41 +35,12 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $travel)
+    public function store(Request $request)
     {
-        // dd($travel);
-        // die();
-        // Busca el primer modelo que coincida con las restricciones
-         $booking = Booking::firstOrNew([
-            'user_id' => Auth::id(),
-            'travel_id' => $travel->travelId
-        ]);
+        $booking = new Booking;
+        $booking->bookingManage($request);
 
-        // Si existe, lo borra (cancelar reserva)
-        if ($booking->id) {
-            $booking->delete();
-
-        // Si no, lo crea (reserva guardada)
-        } else {
-            $booking->save();
-        }
-        
-        // Aqui va el redirect con inertia
-        // return view('travels');
-
-        // Jesus
-        //Guardar reserva
-        // $booking = new Booking;
-        // $booking->user_id = Auth::id();
-        // $booking->travel_id = $travel->travelId;
-        // $booking->save();
-
-        // //Restar una plaza a los asientos disponibles
-        // $travel = Travel::find($travel->travelId);
-        // $travel->seats = $travel->seats - 1;
-        // $travel->save();
-
-        return redirect('/home');
+        return redirect('/travels');
     }
 
     /**

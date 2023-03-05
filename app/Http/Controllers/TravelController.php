@@ -24,6 +24,12 @@ class TravelController extends Controller
         // dd($travels);
         return Inertia::render('Travels/Index', ['travels' => $travels]);
             
+        $travels = Travel::with('user')
+            ->orderBy('date', 'asc')
+            ->latest('updated_at')
+            ->get();
+
+        return Inertia::render('Travels/Index', ['travels' => $travels]);
     }
 
     /**
@@ -41,7 +47,7 @@ class TravelController extends Controller
         // ]);
 
         // request()->merge(['user_id' => Auth::id()]);
-        
+
         // Travel::create($request->all());
         // return Inertia::render('Travels/New');
     }
@@ -54,7 +60,6 @@ class TravelController extends Controller
      */
     public function store(TravelForm $request)
     {
-        $request->merge(['user_id' => Auth::id()]);
         Travel::create($request->all());
 
         // Aqui iria el redirect con inertia
@@ -69,9 +74,7 @@ class TravelController extends Controller
      */
     public function show(Travel $travel)
     {
-        // dd($travel);
-        $user = $travel->user;
-        return Inertia::render('Travels/Show', ['travel' => $travel, 'user' => $user]);
+        return Inertia::render('Travels/Show', ['travel' => $travel]);
     }
 
     /**

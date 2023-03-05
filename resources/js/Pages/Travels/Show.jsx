@@ -25,26 +25,25 @@ export default function Show() {
       <Navigation />
       <Container>
         <Card className='shadow'>
-          <Card.Header as="h4" className="p-3 mb- rounded"><i className="bi bi-calendar-check p-3"></i> Check the data and confirm your booking !
+          <Card.Header as="h4" className="p-3 mb- rounded"><i class="bi bi-calendar-check p-3"></i>
+            ¡Consulta los datos y confirma tu reserva!
           </Card.Header>
 
           <Card.Body>
             <div className="row no-gutters">
               <div className="col-md-6">
                 <Card.Body>
-                  <Card.Title>Route: {travel.origin}<i className="bi bi-arrow-right"></i> {travel.destination} </Card.Title>
+                  <Card.Title> Trayecto: {travel.origin}<i className="bi bi-arrow-right"></i> {travel.destination} </Card.Title>
                   <Card.Title>Fecha: {new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
-                  <Card.Text>
-                    <i className="bi bi-hourglass-split pe-3"></i>
-                    {travel.hour}
-                    {/* <Moment diff={travel.dtime} unit="seconds" to={travel.atime} */}
-                  </Card.Text>
-                  <Card.Text>
-                    <i className="bi bi-person-circle pe-3"></i>
-                    <Link href="#">
+
+                  <Card.Title>Horario</Card.Title>
+                  <Card.Text>De salida: {travel.hour}</Card.Text>
+                  <Card.Text>De llegada: --:-- </Card.Text>
+                  <Card.Title>
+                    <p>Chofer: <Link href="#">
                       {user.name}
-                    </Link>
-                  </Card.Text>
+                    </Link></p>
+                  </Card.Title>
 
                   <form onSubmit={submit}>
                     <input
@@ -52,7 +51,7 @@ export default function Show() {
                       name="travelId"
                       value={travel.id}
                     />
-                    <Button variant="primary" type="submit">Confirm</Button>
+                    <Button variant="primary" type="submit">Confirmar</Button>
                   </form>
                 </Card.Body>
               </div>

@@ -21,36 +21,34 @@ export default function Index() {
       <div className="container position-relative mb-4 mt-4">
         <SearchForm />
         <div className="row justify-content-center">
-          <Row xs={1} md={2} className="g-2 justify-content-center">
+          <Row xs={1} md={3} className="g-2 justify-content-center">
             {travels.length ? (
               travels.map(travel => (
                 <Col>
                   <Card className='shadow'>
-                    <Card.Header as="h4" className="p-3 rounded">{travel.origin} <i className="bi bi-arrow-right"></i> {travel.destination}</Card.Header>
-                    
+                    <Card.Header as="h4" className="p-3 rounded">Ruta: {travel.origin} <i className="bi bi-arrow-right"></i> {travel.destination}</Card.Header>
+
                     <Card.Body>
                       <div className="row no-gutters">
                         <div className="col-md-6">
                           <Card.Body>
-                            <Card.Title>{new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
+                            <Card.Title>Fecha: {new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
                             <Card.Text>
-                              <i className="bi bi-hourglass-split"></i>                              {/* <Moment diff={travel.dtime} unit="seconds" to={travel.atime} */}
+                              <i className="bi bi-hourglass-split pe-3 p-lg" title="Hora de salida"></i>                              {/* <Moment diff={travel.dtime} unit="seconds" to={travel.atime} */}
+                              {travel.hour}
                             </Card.Text>
                             <Card.Text>
-                              <i className="bi bi-people pe-3" title="Available seats" />
+                              <i className="bi bi-people pe-3" title="Asientos disponibles" />
                               {travel.seats}
                             </Card.Text>
                             <Card.Text>
-                              <i className="bi bi-person-circle pe-3"></i>
+                              <i className="bi bi-person-circle pe-3" title="Chofer"></i>
                               <Link href="#">
                                 {travel.user.name}
                               </Link>
                             </Card.Text>
-                            <Card.Text>
-                              <i className="bi bi-star-fill pe-3 text-success"></i> {travel.user.score}
-                            </Card.Text>
                             <Link href={"/travels/" + travel.id}>
-                              <Button variant="primary">Book this ride</Button>
+                              <Button variant="primary">Reservar</Button>
                             </Link>
 
                             {/*<Button href={"/bookings/show/" + travel.id} variant="primary">Book this ride</Button>*/}
@@ -58,12 +56,12 @@ export default function Index() {
                         </div>
                         <div className="col-md-6">
                           <Card.Body>
-                            <Card.Title className='text-end'>{travel.price}€</Card.Title>
+                            <Card.Title className='text-end'>Precio: {travel.price}€</Card.Title>
                           </Card.Body>
                         </div>
                       </div>
                     </Card.Body>
-                    
+
                   </Card >
                 </Col>
 
