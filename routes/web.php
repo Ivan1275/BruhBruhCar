@@ -42,7 +42,6 @@ Route::get('/login', function () {
 Route::middleware('auth')->group(function () {
 });
 
-
 // Rutas para Usarios que SI esten verificados
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', function () {

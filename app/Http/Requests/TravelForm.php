@@ -29,6 +29,7 @@ class TravelForm extends FormRequest
             'date' => 'required',
             'hour' => 'required',
             'seats' => 'required|gt:0', // el numero de asientos debe ser mayor a 0
+            'price' => 'required|gt:0' // el numero de asientos debe ser mayor a 0
         ];
     }
 }

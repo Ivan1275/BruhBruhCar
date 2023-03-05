@@ -51,7 +51,15 @@ export default function Show() {
                       name="travelId"
                       value={travel.id}
                     />
-                    <Button variant="primary" type="submit">Confirmar</Button>
+
+                    { // Si el usuario actual es el creador del travel
+                      travel.user_id == auth.user.id
+                        // Se desactiva el boton
+                        ? <Button variant="primary" type="submit" disabled>Confirmar</Button>
+                        // Si no, permanece activo
+                        : <Button variant="primary" type="submit">Confirmar</Button>
+                    }
+
                   </form>
                 </Card.Body>
               </div>
