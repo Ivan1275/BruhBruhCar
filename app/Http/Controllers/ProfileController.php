@@ -104,10 +104,13 @@ class ProfileController extends Controller
     }
     
     
-    public function show(Request $profile)
+    public function show(User $profile)
     {
-        dd($profile);
-        $user = $profile->user;
-        return Inertia::render('Travels/Show', ['profile' => $profile, 'user' => $user]);
+        if($profile == null){
+            return Inertia::render('Profile/Show');
+        } else{
+            return Inertia::render('Profile/Show', ['profile' => $profile]);
+        }
+        
     }
 }

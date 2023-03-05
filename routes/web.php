@@ -51,14 +51,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Rutas de Travels
     Route::get('/travels/{travel}', [TravelController::class, 'show']);
-    Route::get('/travels/{travel}', [TravelController::class, 'show']);
     Route::get('/new-travel', [TravelController::class, 'create']);
     Route::post('/new-travel', [TravelController::class, 'store']);
     Route::get('/my-travels', [TravelController::class, 'personal']);
     
 
     // Rutas de Bookings
-    Route::get('/bookings', [TravelController::class, 'create']);
+    Route::get('/my-bookings', [BookingController::class, 'index']);
     Route::post('/bookings', [BookingController::class, 'store']);
 
     // Rutas de Profile
@@ -69,6 +68,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/profile/edit/update-password', [ProfileController::class, 'update_pswd']);
     Route::get('/profile/edit/delete', [ProfileController::class, 'show_destroy']);
     Route::post('/profile/edit/delete', [ProfileController::class, 'destroy']);
-    Route::get('/profile/show/{id}', [ProfileController::class, 'show']);
+    Route::get('/profile/show/{profile}', [ProfileController::class, 'show']);
 
 });

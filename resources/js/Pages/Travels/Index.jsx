@@ -13,6 +13,8 @@ import SearchForm from '../Layouts/Components/SearchForm';
 
 export default function Index() {
   const { travels } = usePage().props;
+  const { auth } = usePage().props;
+
 
   return (
     <>
@@ -43,15 +45,13 @@ export default function Index() {
                             </Card.Text>
                             <Card.Text>
                               <i className="bi bi-person-circle pe-3" title="Chofer"></i>
-                              <Link href="#">
+                              <Link href={travel.user.id == auth.user.id ? ("/profile") : ("/profile/show/" + travel.user.id)}>
                                 {travel.user.name}
                               </Link>
                             </Card.Text>
                             <Link href={"/travels/" + travel.id}>
                               <Button variant="primary">Reservar</Button>
                             </Link>
-
-                            {/*<Button href={"/bookings/show/" + travel.id} variant="primary">Book this ride</Button>*/}
                           </Card.Body>
                         </div>
                         <div className="col-md-6">
@@ -68,7 +68,7 @@ export default function Index() {
               ))) : (
               <>
                 <Col className="m-3 pt-3 text-center">
-                  <h2>No rides found. Try again!</h2>
+                  <h2>No se han encontrado viajes. ¡Intentalo de nuevo!</h2>
                 </Col>
               </>
             )}

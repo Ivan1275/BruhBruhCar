@@ -34,6 +34,7 @@ export default function Navigation() {
                 className="mx-2"
               >
                 <NavDropdown.Item href="/my-travels"><i className='bi bi-car-front pe-3'></i>Mis viajes</NavDropdown.Item>
+                <NavDropdown.Item href="/my-bookings"><i className='bi bi-car-front-fill pe-3'></i>Mis reservas</NavDropdown.Item>
                 <NavDropdown.Item href="#"><i className='bi bi-chat pe-3'></i>Mensajes</NavDropdown.Item>
                 <NavDropdown.Item href="#"><i className='bi bi-credit-card pe-3'></i>Pagos</NavDropdown.Item>
                 <NavDropdown.Item href="/profile"><i className='bi bi-person-circle pe-3'></i>Perfil</NavDropdown.Item>

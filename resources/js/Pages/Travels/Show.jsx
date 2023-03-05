@@ -8,7 +8,7 @@ En lugar de volver a hacer la petición a Laravel y devolver la info */
 
 export default function Show() {
   const { travel } = usePage().props;
-  const { user } = usePage().props;
+  const { auth } = usePage().props;
   const { post } = useForm({ //Para poder pasarle el travel id y descontar un asiento
     travelId: travel.id,
     travelSeats: travel.seats
@@ -25,7 +25,7 @@ export default function Show() {
       <Navigation />
       <Container>
         <Card className='shadow'>
-          <Card.Header as="h4" className="p-3 mb- rounded"><i class="bi bi-calendar-check p-3"></i>
+          <Card.Header as="h4" className="p-3 mb- rounded"><i className="bi bi-calendar-check p-3"></i>
             ¡Consulta los datos y confirma tu reserva!
           </Card.Header>
 
@@ -41,7 +41,7 @@ export default function Show() {
                   <Card.Text>De llegada: --:-- </Card.Text>
                   <Card.Title>
                     <p>Chofer: <Link href="#">
-                      {user.name}
+                      {auth.user.name}
                     </Link></p>
                   </Card.Title>
 

@@ -40,16 +40,6 @@ class TravelController extends Controller
     public function create()
     {
         return Inertia::render('Travels/New');
-
-        // $this->validate($request, [
-        //     'email' => 'required',
-        //     'password' => 'required'
-        // ]);
-
-        // request()->merge(['user_id' => Auth::id()]);
-
-        // Travel::create($request->all());
-        // return Inertia::render('Travels/New');
     }
 
     /**

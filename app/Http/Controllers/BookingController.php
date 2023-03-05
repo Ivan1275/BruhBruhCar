@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\Travel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class BookingController extends Controller
 {
@@ -16,7 +17,26 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        // Id del usuario
+        $user_id = Auth::id();
+
+        // Busco todas las reservas del usuario para asi buscar esos viajes
+        $bookings = Booking::where('user_id', $user_id)->get();
+        dd($bookings); die();
+        
+        // 2 maneras de pillar los travels
+        // Esta es la ideal, que seria con el HasMany del modelo pillar todos los travels, pero no fulula
+        if ($bookings) {
+            $travels = $bookings->travels()->with('user')->orderBy('created_at', 'asc')->get();
+            return Inertia::render('Travels/Index', ['travels' => $travels]);
+        } else{
+            $travels = null;
+            return Inertia::render('Travels/Index', ['travels' => $travels]);
+        }
+
+        // La segunda es hacer un foreach por cada booking de $bookings y arrastrar la array a una variable (lo suyo seria q no)
+        $travels = Travel::with('user')->orderBy('created_at', 'asc')->where('id', $bookings)->get();
+        return Inertia::render('Travels/Index', ['travels' => $travels]);
     }
 
     /**

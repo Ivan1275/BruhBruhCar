@@ -57,4 +57,9 @@ class Booking extends Model
         $travel->seats = $travel->seats - 1;
         $travel->save();
     }
+
+    public function travels()
+    {
+        return $this->hasMany(Travel::class);
+    }
 }
