@@ -9,6 +9,7 @@ En lugar de volver a hacer la petición a Laravel y devolver la info */
 export default function Show() {
   const { travel } = usePage().props;
   const { user } = usePage().props;
+  const { auth } = usePage().props;
   const { post } = useForm({ //Para poder pasarle el travel id y descontar un asiento
     travelId: travel.id,
     travelSeats: travel.seats
@@ -50,7 +51,15 @@ export default function Show() {
                       name="travelId"
                       value={travel.id}
                     />
-                    <Button variant="primary" type="submit">Confirmar</Button>
+
+                    { // Si el usuario actual es el creador del travel
+                      travel.user_id == auth.user.id
+                        // Se desactiva el boton
+                        ? <Button variant="primary" type="submit" disabled>Confirmar</Button>
+                        // Si no, permanece activo
+                        : <Button variant="primary" type="submit">Confirmar</Button>
+                    }
+
                   </form>
                 </Card.Body>
               </div>

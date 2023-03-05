@@ -19,11 +19,12 @@ class TravelFactory extends Factory
     {
         return [
             'user_id' => User::all()->random()->id,
-            'origin' => 'Pto Rosario',
-            'destination' => 'Corra',
-            'date' => $this->faker->date,
-            'hour' => $this->faker->time,
-            'seats' => 3
+            'origin' => fake()->randomElement(['Pto. del Rosario', 'Gran Tarajal', 'Playa Blanca']),
+            'destination' => fake()->randomElement(['Castillo', 'Morrojable', 'Corralejo']),
+            'date' => fake()->dateTimeBetween('now', '+1 month'),
+            'hour' => fake()->time('H:i'),
+            'seats' => fake()->randomDigitNot(0),
+            'price' => fake()->numberBetween(5, 50)
         ];
     }
 }
