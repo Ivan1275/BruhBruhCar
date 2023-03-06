@@ -50,6 +50,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Rutas de Travels
     Route::get('/travels/{travel}', [TravelController::class, 'show']);
+    Route::get('/travels/{filter}', [TravelController::class, 'index']);
     Route::get('/new-travel', [TravelController::class, 'create']);
     Route::post('/new-travel', [TravelController::class, 'store']);
     Route::get('/my-travels', [TravelController::class, 'personal']);
