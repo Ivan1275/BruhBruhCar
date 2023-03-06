@@ -14,7 +14,6 @@ export default function Index() {
   const { flash } = usePage().props;
   const { travels } = usePage().props;
 
-
   return (
     <>
       <Navigation />
@@ -48,8 +47,8 @@ export default function Index() {
                               {travel.seats}
                             </Card.Text>
                             <Card.Text>
-                              <i className="bi bi-person-circle pe-3" title="Chofer"></i>
-                              <Link href={travel.user.id == auth.user.id ? ("/profile") : ("/profile/show/" + travel.user.id)}>
+                              <i className="bi bi-person-circle pe-3" title="Chofer"></i>                           
+                              <Link href={auth.user != null && travel.user.id == auth.user.id ? ("/profile") : ("/profile/show/" + travel.user.id)}>
                                 {travel.user.name}
                               </Link>
                             </Card.Text>

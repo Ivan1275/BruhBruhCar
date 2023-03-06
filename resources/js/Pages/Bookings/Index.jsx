@@ -15,8 +15,6 @@ import SearchForm from '../Layouts/Components/SearchForm';
 export default function Index() {
     const { user } = usePage().props;
     const { bookings } = usePage().props;
-    const { auth } = usePage().props;
-
 
     return (
         <>
@@ -32,7 +30,7 @@ export default function Index() {
                                 
                                 <Col>
                                     <Card className='shadow'>
-                                        <Card.Header as="h4" className="p-3 rounded">Ruta: {travel.origin} <i className="bi bi-arrow-right"></i> {travel.destination}</Card.Header>
+                                        <Card.Header as="h4" className="p-3 rounded">Ruta: {travel.bookings.origin} <i className="bi bi-arrow-right"></i> {travel.destination}</Card.Header>
 
                                         <Card.Body>
                                             <div className="row no-gutters">
@@ -50,11 +48,11 @@ export default function Index() {
                                                         <Card.Text>
                                                             <i className="bi bi-person-circle pe-3" title="Chofer"></i>
                                                             
-                                                                {travel.pivot.name}
+                                                                {travel.bookings.name}
                                                             
                                                         </Card.Text>
                                                         <Link href={"/travels/" + travel.id}>
-                                                            <Button variant="primary">Reservar</Button>
+                                                            <Button variant="primary">Informacion</Button>
                                                         </Link>
                                                     </Card.Body>
                                                 </div>

@@ -24,7 +24,8 @@ class BookingController extends Controller
         // Busco todas las reservas del usuario para asi buscar esos viajes
         // $bookings = $user->with('bookings')->get();
         $bookings = $user->bookings()->get();
-        dd($bookings);
+        $bookings = Travel::with('bookings.user')->get();
+        
 
         return Inertia::render('Bookings/Index', ['bookings' => $bookings]);
     }

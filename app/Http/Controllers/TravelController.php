@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Travel;
+use App\Models\User;
 use App\Queries\TravelsQuery;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
@@ -52,7 +53,7 @@ class TravelController extends Controller
             $travels = $query->getAll();
         }
 
-        dd($travels);
+        // dd($travels);
         return Inertia::render('Travels/Index', ['travels' => $travels]);
     }
 
@@ -79,7 +80,6 @@ class TravelController extends Controller
         Session::flash('message', 'Tu viaje se ha creado correctamente');
 
         return redirect('/travels');
-
     }
 
     /**
@@ -90,7 +90,8 @@ class TravelController extends Controller
      */
     public function show(Travel $travel)
     {
-        return Inertia::render('Travels/Show', ['travel' => $travel]);
+        $user = $travel->user;
+        return Inertia::render('Travels/Show', ['travel' => $travel, 'user' => $user]);
     }
 
     /**
