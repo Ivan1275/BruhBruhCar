@@ -50,6 +50,7 @@ class TravelController extends Controller
             $travels = $query->getAll();
         }
 
+        dd($travels);
         return Inertia::render('Travels/Index', ['travels' => $travels]);
     }
 

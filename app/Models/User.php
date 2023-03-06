@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use Illuminate\Support\Facades\Auth;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -49,6 +49,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function bookings()
     {
-        return $this->hasMany(Booking::class);
+        return $this->belongsToMany(Travel::class, 'bookings');
     }
 }

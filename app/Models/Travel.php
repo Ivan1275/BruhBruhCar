@@ -25,4 +25,9 @@ class Travel extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function bookings()
+    {
+        return $this->belongsToMany(User::class, 'bookings')->withPivot('pivot_user_id');
+    }
 }
