@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Travel;
-use App\Models\User;
+use App\Queries\TravelsQuery;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
@@ -20,14 +20,35 @@ class TravelController extends Controller
      */
     public function index()
     {
-        $travels = Travel::with('user')->orderBy('created_at', 'asc')->get(); //->paginate(6)
-        // dd($travels);
-        return Inertia::render('Travels/Index', ['travels' => $travels]);
-            
-        $travels = Travel::with('user')
-            ->orderBy('date', 'asc')
-            ->latest('updated_at')
-            ->get();
+        $filter = request()->exists('filter');
+        $filter_value = request()->input('filter');
+        $query = new TravelsQuery;
+
+        if ($filter) {
+            switch ($filter_value) {
+                case 'fecha':
+                    $travels = $query->getBy('date');
+                    break;
+
+                case 'hora-salida':
+                    $travels = $query->getBy('hour');
+                    break;
+
+                case 'asientos':
+                    $travels = $query->getBy('seats');
+                    break;
+
+                case 'precio':
+                    $travels = $query->getBy('price');
+                    break;
+
+                default:
+                    $travels = $query->getAll();
+                    break;
+            }
+        } else {
+            $travels = $query->getAll();
+        }
 
         return Inertia::render('Travels/Index', ['travels' => $travels]);
     }

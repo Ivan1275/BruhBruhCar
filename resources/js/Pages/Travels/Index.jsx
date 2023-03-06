@@ -7,6 +7,7 @@ import { Button } from 'react-bootstrap';
 
 // Components
 import Navigation from '../Layouts/Components/Navigation';
+import TravelFilter from '../Layouts/Components/TravelFilter';
 import Footer from '../Layouts/Components/Footer';
 import SearchForm from '../Layouts/Components/SearchForm';
 
@@ -22,6 +23,7 @@ export default function Index() {
 
       <div className="container position-relative mb-4 mt-4">
         <SearchForm />
+        <TravelFilter />
         <div className="row justify-content-center">
           <Row xs={1} md={3} className="g-2 justify-content-center">
             {travels.length ? (
