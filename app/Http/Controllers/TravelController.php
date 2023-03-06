@@ -9,6 +9,8 @@ use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\TravelForm;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 
 class TravelController extends Controller
@@ -74,8 +76,10 @@ class TravelController extends Controller
     {
         Travel::create($request->all());
 
-        // Aqui iria el redirect con inertia
-        // return $this->index();
+        Session::flash('message', 'Tu viaje se ha creado correctamente');
+
+        return redirect('/travels');
+
     }
 
     /**

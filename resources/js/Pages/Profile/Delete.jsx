@@ -32,7 +32,7 @@ export default function EditProfile() {
     function handleSubmit(e) {
         e.preventDefault()
         console.log(values)
-        // router.post('/profile/edit/delete', values)
+        router.post('/profile/edit/delete', values)
     }
 
 

@@ -1,9 +1,6 @@
 // React
 import { Link, usePage } from '@inertiajs/react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import { Button } from 'react-bootstrap';
+import { Button, Row, Col, Card, Alert } from 'react-bootstrap';
 
 // Components
 import Navigation from '../Layouts/Components/Navigation';
@@ -13,13 +10,18 @@ import SearchForm from '../Layouts/Components/SearchForm';
 
 
 export default function Index() {
-  const { travels } = usePage().props;
   const { auth } = usePage().props;
+  const { flash } = usePage().props;
+  const { travels } = usePage().props;
 
 
   return (
     <>
       <Navigation />
+
+      {flash.message && (
+        <div>{flash.message}</div>
+      )}
 
       <div className="container position-relative mb-4 mt-4">
         <SearchForm />
