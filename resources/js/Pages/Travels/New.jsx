@@ -9,6 +9,7 @@ import Footer from '../Layouts/Components/Footer';
 export default function New3(props) {
     const { errors } = usePage().props;
     const { auth } = usePage().props;
+    const { flash } = usePage().props;
 
     
     const [values, setForm] = useState({
@@ -41,6 +42,10 @@ export default function New3(props) {
         
       <>
         <Navigation />
+
+        {flash.message && (
+            <div>{flash.message}</div>
+        )}
         
         <div className="container">
             <div className="row justify-content-center">
