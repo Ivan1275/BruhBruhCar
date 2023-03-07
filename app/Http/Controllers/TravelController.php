@@ -132,6 +132,7 @@ class TravelController extends Controller
     {
         $user_id = Auth::id();
         $travels = Travel::with('user')->orderBy('created_at', 'asc')->where('user_id', $user_id)->get(); //->paginate(6)
+        dd($travels);
         return Inertia::render('Travels/Index', ['travels' => $travels]);
     }
 }

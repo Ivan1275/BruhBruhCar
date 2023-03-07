@@ -36,7 +36,7 @@ Route::get('/register', function () {
 
 Route::get('/login', function () {
     return Inertia::render('Layouts/LogIn');
-});
+})->name('login');
 
 // Rutas para Usarios que NO esten verificados
 Route::middleware('auth')->group(function () {

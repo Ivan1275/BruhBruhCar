@@ -30,7 +30,7 @@ export default function Index() {
                                 
                                 <Col>
                                     <Card className='shadow'>
-                                        <Card.Header as="h4" className="p-3 rounded">Ruta: {travel.bookings.origin} <i className="bi bi-arrow-right"></i> {travel.destination}</Card.Header>
+                                        <Card.Header as="h4" className="p-3 rounded">Ruta: {travel.origin} <i className="bi bi-arrow-right"></i> {travel.destination}</Card.Header>
 
                                         <Card.Body>
                                             <div className="row no-gutters">
@@ -48,7 +48,7 @@ export default function Index() {
                                                         <Card.Text>
                                                             <i className="bi bi-person-circle pe-3" title="Chofer"></i>
                                                             
-                                                                {travel.bookings.name}
+                                                                {travel.users[0].name}
                                                             
                                                         </Card.Text>
                                                         <Link href={"/travels/" + travel.id}>
