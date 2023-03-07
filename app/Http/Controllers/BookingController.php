@@ -22,7 +22,7 @@ class BookingController extends Controller
         $user = User::find(Auth::id());
 
         // Busco todas las reservas del usuario para asi buscar esos viajes
-        $users = User::with('bookings')->where('id', $user->id)->get();
+        $users = User::with('bookings.user')->where('id', $user->id)->get();
   
         return Inertia::render('Bookings/Index', ['users' => $users]);
     }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class RatingFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user1_id' => User::all()->unique()->random()->id,
+            'user2_id' => User::all()->unique()->random()->id,
+            'score' => fake()->numberBetween(1, 5), // 1-5 estrellas
+            'comment' => fake()->text(150) // texto de 150 caracteres
         ];
     }
 }
