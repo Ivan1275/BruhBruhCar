@@ -76,7 +76,6 @@ class TravelController extends Controller
     public function store(TravelForm $request)
     {
         Travel::create($request->all());
-
         return back()->with(Session::flash('message', 'Tu viaje se ha creado correctamente'));
     }
 

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Rating;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Inertia\Inertia;
 
 class RatingController extends Controller
 {
@@ -22,9 +26,10 @@ class RatingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-        //
+        $user = $user->id;
+        return Inertia::render('Ratings/New', ['user' => $user]);
     }
 
     /**
@@ -35,7 +40,9 @@ class RatingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        Rating::create($request->all());
+        return back()->with(Session::flash('message', 'Tu valoracion se ha realizado correctamente'));
     }
 
     /**

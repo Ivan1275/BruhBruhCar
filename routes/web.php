@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TravelController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RatingController;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 
@@ -56,11 +57,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/my-travels', [TravelController::class, 'personal']);
     Route::post('/travel/delete', [TravelController::class, 'destroy']);
 
-    
-
     // Rutas de Bookings
     Route::get('/my-bookings', [BookingController::class, 'index']);
     Route::post('/bookings', [BookingController::class, 'store']);
+
+    // Rutas de Rating
+    Route::get('/rating/new-rating/{user}', [RatingController::class, 'create']);
+    Route::post('/rating/new-rating', [RatingController::class, 'store']);
 
     // Rutas de Profile
     Route::get('/profile', [ProfileController::class, 'index']);

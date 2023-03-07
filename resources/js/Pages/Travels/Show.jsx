@@ -14,6 +14,7 @@ export default function Show() {
   const { auth } = usePage().props;
   const { user } = usePage().props;
   const { flash } = usePage().props;
+  
   const { post } = useForm({ //Para poder pasarle el travel id y descontar un asiento
     travelId: travel.id,
     travelSeats: travel.seats

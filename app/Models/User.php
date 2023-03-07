@@ -54,6 +54,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function ratingFor()
     {
+        // Devuelve un listado con los usuarios por los que se ha votado
         return $this->belongsToMany(User::class, 'ratings', 'user2_id', 'user1_id')
         ->withPivot('score', 'comment')
         ->as('rating');
@@ -61,6 +62,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function myRatings()
     {
+        // Devuelve un listado con los usuarios que me han votado
         return $this->belongsToMany(User::class, 'ratings', 'user1_id', 'user2_id')
         ->withPivot('score', 'comment')
         ->as('rating');
