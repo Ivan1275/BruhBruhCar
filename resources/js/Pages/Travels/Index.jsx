@@ -19,10 +19,22 @@ export default function Index() {
     <>
       <Navigation />
 
-      {flash.message && (
-        <div>{flash.message}</div>
-      )}
+      <div className="pt-2">
+        {flash.message && (
+          <Alert key={'success'} variant={'success'}>
+            <div className="text-center">{flash.message}</div>
+          </Alert>
+        )}
+      </div>
 
+      <div className="pt-2">
+        {flash.errormessage && (
+          <Alert key={'warning'} variant={'warning'}>
+            <div className="text-center">{flash.errormessage}</div>
+          </Alert>
+        )}
+      </div>
+      
       <div className="container position-relative mb-4 mt-4">
         <SearchForm />
         <TravelFilter />
@@ -53,7 +65,7 @@ export default function Index() {
                                 {travel.user.name}
                               </Link>
                             </Card.Text>
-                            <Link href={"/travels/" + travel.id}>
+                            <Link href={"/travel/show/" + travel.id}>
                               <Button variant="primary">Reservar</Button>
                             </Link>
                           </Card.Body>

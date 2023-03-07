@@ -7,6 +7,7 @@ use App\Models\Travel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 
 class BookingController extends Controller
@@ -51,7 +52,7 @@ class BookingController extends Controller
         $booking = new Booking;
         $booking->bookingManage($request);
 
-        return redirect('/travels');
+        return back()->with(Session::flash('message', 'Tu reserva se ha realizado correctamente'));
     }
 
     /**

@@ -1,6 +1,7 @@
 // React
 import React, { useState } from 'react';
-import { router, usePage } from '@inertiajs/react'
+import { router, usePage } from '@inertiajs/react';
+import { Button, Row, Col, Card, Alert, Container } from 'react-bootstrap';
 
 // Components
 import Navigation from '../Layouts/Components/Navigation';
@@ -42,13 +43,18 @@ export default function New3(props) {
         
       <>
         <Navigation />
-
-        {flash.message && (
-            <div>{flash.message}</div>
-        )}
         
-        <div className="container">
-            <div className="row justify-content-center">
+        <Container>
+            
+            <div className="pt-2">
+                {flash.message && (
+                    <Alert key={'success'} variant={'success'}>
+                        <div className="text-center">{flash.message}</div>
+                    </Alert>
+                )}
+            </div>
+
+            <Row className="justify-content-center">
                 <div className="col-md-8 pb-4">
                     <div className="card">
                         <div className="card-header text-center">
@@ -125,8 +131,8 @@ export default function New3(props) {
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </Row>
+        </Container>
 
         <Footer />
       </>

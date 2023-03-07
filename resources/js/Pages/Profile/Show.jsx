@@ -10,20 +10,14 @@ import Footer from '../Layouts/Components/Footer';
 
 export default function ShowProfile() {
     const { profile } = usePage().props;
-    const { auth } = usePage().props;
 
-    // console.log(auth);
-    if(profile.id == auth.user.id){
-        // Aca viene un redireecionamiento al profile/index
-        router.get('/profile')
-    }
 
     return (
     <>
         <Navigation />
 
         <Container>
-            {auth.user == null &&
+            {profile == null &&
                 <>
                     <Row className="text-center pt-4 pb-3">
                         <h1>No existe tal usuario</h1>
@@ -32,7 +26,7 @@ export default function ShowProfile() {
                 </>
             }
             
-            {auth.user != null &&
+            {profile != null &&
                 <>
                     <Row className="text-center pt-4 pb-3">
                         <h2>{profile.name}</h2>

@@ -77,9 +77,7 @@ class TravelController extends Controller
     {
         Travel::create($request->all());
 
-        Session::flash('message', 'Tu viaje se ha creado correctamente');
-
-        return redirect('/travels');
+        return back()->with(Session::flash('message', 'Tu viaje se ha creado correctamente'));
     }
 
     /**
@@ -90,6 +88,7 @@ class TravelController extends Controller
      */
     public function show(Travel $travel)
     {
+        // dd($travel); die();
         $user = $travel->user;
         return Inertia::render('Travels/Show', ['travel' => $travel, 'user' => $user]);
     }
@@ -123,9 +122,24 @@ class TravelController extends Controller
      * @param  \App\Models\Travel  $travel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Travel $travel)
+    public function destroy(Request $request)
     {
-        //
+        // dd($request); die();
+        $request->validateWithBag('userDeletion', [
+            'password' => ['required', 'current-password'],
+        ]);
+        
+        // $user = $request->user();
+        
+        // Auth::logout();
+        
+        // $user->delete();
+        
+        // $request->session()->invalidate();
+        // $request->session()->regenerateToken();
+        
+        return Redirect::to('/my-travels')->with(Session::flash('errormessage', 'Tu viaje se hubiese borrado correctamente'));
+        
     }
 
     public function personal()

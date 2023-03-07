@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 
 class ProfileController extends Controller
@@ -39,8 +39,10 @@ class ProfileController extends Controller
 
         $request->user()->save();
         $user = Auth::user();
+
+        Session::flash('message', 'Tus datos se han actualizado correctamente');
         
-        return Inertia::render('Profile/Edit', ['user' => $user])->with('status', 'profile-updated');
+        return Inertia::render('Profile/Edit', ['user' => $user]);
     }
 
 
@@ -62,7 +64,7 @@ class ProfileController extends Controller
 
         #Match The Old Password
         if(!Hash::check($request->old_password, auth()->user()->password)){
-            return back()->with("error", "Old Password Doesn't match!");
+            return back()->with("errormessage", "Old Password Doesn't match!");
         }
 
 
@@ -70,6 +72,8 @@ class ProfileController extends Controller
         User::whereId(auth()->user()->id)->update([
             'password' => Hash::make($request->new_password)
         ]);
+
+        return back()->with(Session::flash('message', 'Tu contraseña se ha actualizado correctamente'));
     }
 
 
@@ -91,8 +95,6 @@ class ProfileController extends Controller
 
         // $real_user = User::where('user_id', $user->id)->get();
         
-        // dd($real_user);
-        // die(); //has q vaya esto, el id en vez de ser user:id se guarda como id por la cara, sino pillalo sin mas y ala verga
 
         Auth::logout();
 
@@ -101,12 +103,17 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::to('/')->with(Session::flash('errormessage', 'Tu usuario se ha borrado correctamente'));
     }
     
     
     public function show(User $profile)
     {
+        $user_id = Auth::id();
+        if($profile->id == $user_id){
+            return redirect('/profile');
+        }
+        
         if($profile == null){
             return Inertia::render('Profile/Show');
         } else{
