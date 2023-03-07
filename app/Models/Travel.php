@@ -26,7 +26,7 @@ class Travel extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function bookings()
+    public function users()
     {
         return $this->belongsToMany(User::class, 'bookings');
     }
