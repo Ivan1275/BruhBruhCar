@@ -14,12 +14,6 @@ export default function Index() {
   const { flash } = usePage().props;
   const { travels } = usePage().props;
 
-  if(auth == null){
-    auth.user = 0;
-  }
-  
-  console.log(auth);
-
 
   return (
     <>
