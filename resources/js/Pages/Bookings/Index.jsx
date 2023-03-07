@@ -13,8 +13,8 @@ import SearchForm from '../Layouts/Components/SearchForm';
 
 
 export default function Index() {
-    const { user } = usePage().props;
-    const { bookings } = usePage().props;
+    const { users } = usePage().props;
+    console.log(usePage().props)
 
     return (
         <>
@@ -25,9 +25,9 @@ export default function Index() {
                 <TravelFilter />
                 <div className="row justify-content-center">
                     <Row xs={1} md={3} className="g-2 justify-content-center">
-                        {bookings.length ? (
-                            bookings.map(travel => (
-                                
+                        {users.length > 0 ? (
+                            users[0].bookings.map((travel) => (
+
                                 <Col>
                                     <Card className='shadow'>
                                         <Card.Header as="h4" className="p-3 rounded">Ruta: {travel.origin} <i className="bi bi-arrow-right"></i> {travel.destination}</Card.Header>
@@ -47,9 +47,9 @@ export default function Index() {
                                                         </Card.Text>
                                                         <Card.Text>
                                                             <i className="bi bi-person-circle pe-3" title="Chofer"></i>
-                                                            
-                                                                {travel.users[0].name}
-                                                            
+                                                            <Link href={"/profile/show/" + travel.user.id}>
+                                                                {travel.user.name}
+                                                            </Link>
                                                         </Card.Text>
                                                         <Link href={"/travels/" + travel.id}>
                                                             <Button variant="primary">Informacion</Button>
