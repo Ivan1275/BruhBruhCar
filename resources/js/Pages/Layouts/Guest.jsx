@@ -1,3 +1,4 @@
+// Components
 import Navigation from './Components/Navigation';
 import Header from './Components/Header';
 import IconsGrid from './Components/IconsGrid';
@@ -8,6 +9,8 @@ import Footer from './Components/Footer';
 
 export default function Guest() {
 
+
+  
   return (
     <>
       <Navigation />

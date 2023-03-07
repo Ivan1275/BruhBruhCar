@@ -1,14 +1,14 @@
 // React
 import { router, usePage } from '@inertiajs/react'
 import React, { useState } from 'react';
-import { Button, Form, Card, Container, Nav, Row } from "react-bootstrap"
+import { Button, Form, Card, Container, Nav, Row, Alert } from "react-bootstrap"
 
 // Components
 import Navigation from '../Layouts/Components/Navigation';
 import Footer from '../Layouts/Components/Footer';
 
 export default function EditProfile() {
-    const { auth } = usePage().props;
+    const { flash } = usePage().props;
     const { errors } = usePage().props;
 
     
@@ -55,6 +55,13 @@ export default function EditProfile() {
                         </Nav>
                         </Card.Header>
                         <Card.Body>
+                            
+                            {flash.message && (
+                                <Alert key={'success'} variant={'success'}>
+                                    <div>{flash.message}</div>
+                                </Alert>
+                            )}
+                            
                             <Card>
                                 <Card.Body>
                                     <Form method="POST" onSubmit={handleSubmit}>
