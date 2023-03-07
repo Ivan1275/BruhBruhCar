@@ -14,8 +14,7 @@ import SearchForm from '../Layouts/Components/SearchForm';
 
 export default function Index() {
     const { users } = usePage().props;
-    console.log(usePage().props)
-
+    
     return (
         <>
             <Navigation />
@@ -25,7 +24,7 @@ export default function Index() {
                 <TravelFilter />
                 <div className="row justify-content-center">
                     <Row xs={1} md={3} className="g-2 justify-content-center">
-                        {users.length > 0 ? (
+                        {users[0].bookings.length ? (
                             users[0].bookings.map((travel) => (
 
                                 <Col>
