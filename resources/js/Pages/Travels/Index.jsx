@@ -14,6 +14,12 @@ export default function Index() {
   const { flash } = usePage().props;
   const { travels } = usePage().props;
 
+  if(auth == null){
+    auth.user = 0;
+  }
+  
+  console.log(auth);
+
 
   return (
     <>
@@ -49,7 +55,7 @@ export default function Index() {
                             </Card.Text>
                             <Card.Text>
                               <i className="bi bi-person-circle pe-3" title="Chofer"></i>
-                              <Link href={travel.user.id == auth.user.id ? ("/profile") : ("/profile/show/" + travel.user.id)}>
+                              <Link href={auth.user == null ? ("/profile/show/" + travel.user.id) : (travel.user.id == auth.user.id ? ("/profile") : ("/profile/show/" + travel.user.id))}>
                                 {travel.user.name}
                               </Link>
                             </Card.Text>
@@ -84,3 +90,10 @@ export default function Index() {
 
   )
 }
+
+// if (auth == null) {
+//   "/profile/show/" + travel.user.id
+// } else {
+//   {travel.user.id == auth.user.id ? ("/profile") : ("/profile/show/" + travel.user.id)}
+// }
+
