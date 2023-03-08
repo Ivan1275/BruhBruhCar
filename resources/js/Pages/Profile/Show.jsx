@@ -107,61 +107,6 @@ export default function ShowProfile() {
                 </div>
             </div>
 
-            <div className="container position-relative mb-4 mt-4">
-                <div className="row justify-content-center">
-                <Row className='text-center align-items-center bg-info'><h2>Mis comentarios</h2></Row>
-                    <Row xs={1} md={3} className="g-2 justify-content-center">
-                        {userRatings[0].my_ratings.length ? (
-                            userRatings[0].my_ratings.map((user) => (
-
-                                <Col>
-                                    <Card className='shadow'>
-
-                                        <Card.Header as="h4" className="p-3 rounded">
-
-                                            Usuario:
-                                            <Link href={"/profile/show/" + user.id} className="">
-                                                {user.name}
-                                            </Link>
-
-                                        </Card.Header>
-
-                                        <Card.Body>
-                                            <div className="row no-gutters">
-                                                <div className="col-md">
-                                                    <Card.Body>
-                                                        <Card.Title>Email:</Card.Title>
-                                                        <Card.Text>
-                                                            <i className="bi bi-person-circle pe-3" title="Chofer"></i>
-                                                            {user.email}
-                                                        </Card.Text>
-                                                        <Card.Title>Comentario: </Card.Title>
-                                                        <Card.Text>
-                                                            {user.rating.comment}
-                                                        </Card.Text>
-                                                        <Card.Title>Valoracion: </Card.Title>
-                                                        <Card.Text>
-                                                            {user.rating.score}
-                                                        </Card.Text>
-                                                    </Card.Body>
-                                                </div>
-                                            </div>
-                                        </Card.Body>
-
-                                    </Card >
-                                </Col>
-
-                            ))) : (
-                            <>
-                                <Col className="m-3 pt-3 text-center">
-                                    <h2>No se han encontrado valoraciones. ¡Intentalo de nuevo!</h2>
-                                </Col>
-                            </>
-                        )}
-                    </Row>
-                </div>
-            </div>
-
             <Footer />
         </>
     )
