@@ -11,8 +11,10 @@ import Footer from '../Layouts/Components/Footer';
 export default function ShowProfile() {
     const { profile } = usePage().props;
     const { auth } = usePage().props;
-    const { user } = usePage().props;
-    console.log(user[0].my_ratings);
+    const { userRatings } = usePage().props;
+    const { ratingFor } = usePage().props;
+    console.log(userRatings[0].my_ratings);
+    console.log(ratingFor[0].rating_for);
 
     return (
         <>
@@ -52,9 +54,65 @@ export default function ShowProfile() {
             </Container>
             <div className="container position-relative mb-4 mt-4">
                 <div className="row justify-content-center">
+                    <Row className='text-center bg-info'><h2>Comentarios de los usuarios</h2></Row>
                     <Row xs={1} md={3} className="g-2 justify-content-center">
-                        {user[0].my_ratings.length ? (
-                            user[0].my_ratings.map((user) => (
+                        {ratingFor[0].rating_for.length ? (
+                            ratingFor[0].rating_for.map((user) => (
+
+                                <Col>
+                                    <Card className='shadow'>
+
+                                        <Card.Header as="h4" className="p-3 rounded">
+
+                                            Usuario:
+                                            <Link href={"/profile/show/" + user.id} className="">
+                                                {user.name}
+                                            </Link>
+
+                                        </Card.Header>
+
+                                        <Card.Body>
+                                            <div className="row no-gutters">
+                                                <div className="col-md">
+                                                    <Card.Body>
+                                                        <Card.Title>Email:</Card.Title>
+                                                        <Card.Text>
+                                                            <i className="bi bi-person-circle pe-3" title="Chofer"></i>
+                                                            {user.email}
+                                                        </Card.Text>
+                                                        <Card.Title>Comentario: </Card.Title>
+                                                        <Card.Text>
+                                                            {user.rating.comment}
+                                                        </Card.Text>
+                                                        <Card.Title>Valoracion: </Card.Title>
+                                                        <Card.Text>
+                                                            {user.rating.score}
+                                                        </Card.Text>
+                                                    </Card.Body>
+                                                </div>
+                                            </div>
+                                        </Card.Body>
+
+                                    </Card >
+                                </Col>
+
+                            ))) : (
+                            <>
+                                <Col className="m-3 pt-3 text-center">
+                                    <h2>No se han encontrado valoraciones. ¡Intentalo de nuevo!</h2>
+                                </Col>
+                            </>
+                        )}
+                    </Row>
+                </div>
+            </div>
+
+            <div className="container position-relative mb-4 mt-4">
+                <div className="row justify-content-center">
+                <Row className='text-center align-items-center bg-info'><h2>Mis comentarios</h2></Row>
+                    <Row xs={1} md={3} className="g-2 justify-content-center">
+                        {userRatings[0].my_ratings.length ? (
+                            userRatings[0].my_ratings.map((user) => (
 
                                 <Col>
                                     <Card className='shadow'>
