@@ -1,18 +1,28 @@
 
-import { useForm, usePage } from '@inertiajs/react';
+import { router, usePage } from '@inertiajs/react'
+import React, { useState } from 'react';
 
 export default function SearchForm() {
   const { errors } = usePage().props;
 
-  const { data, setData, get } = useForm({
+  const [values, setForm] = useState({
     origin: '',
     destination: '',
     date: '',
   })
 
+  function handleChange(e) {
+    const key = e.target.id;
+    const value = e.target.value
+    setForm(values => ({
+      ...values,
+      [key]: value,
+    }))
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-    get('/travels', { preserveState: true }) // Permite @old en el formulario
+    router.get('/travels', values) // Permite @old en el formulario
   }
 
   return (
@@ -21,15 +31,13 @@ export default function SearchForm() {
       <div className="row">
         {/* Departure */}
         <div className="col" style={{ flex: '1.5 0 0%' }}>
-          <input
-            className="form-control form-control-lg"
-            id="departure"
-            value={data.origin}
-            name="origin"
-            type="text"
-            placeholder="Origen"
-            onChange={e => setData('origin', e.target.value)}
-          />
+          <select id="origin" className='form-control form-control-lg' value={values.origin} onChange={handleChange} required>
+            <option value="">Seleccionar</option>
+            <option value="Pto. del Rosario">Pto. del Rosario</option>
+            <option value="Castillo">Castillo</option>
+            <option value="Corralejo">Corralejo</option>
+            <option value="Morrojable">Morrojable</option>
+          </select>
           <span className="text-danger">
             {errors.origin}
           </span>
@@ -38,15 +46,13 @@ export default function SearchForm() {
         {/* Destination */}
         <div className="col" style={{ flex: '1.5 0 0%' }}>
           {/*<label for="destination" className="form-label ">Destino...</label>*/}
-          <input
-            className="form-control form-control-lg"
-            id="destination"
-            value={data.destination}
-            name="destination"
-            type="text"
-            placeholder="Destino"
-            onChange={e => setData('destination', e.target.value)}
-          />
+          <select id="destination" className='form-control form-control-lg' value={values.destination} onChange={handleChange} required>
+            <option value="">Seleccionar</option>
+            <option value="Pto. del Rosario">Pto. del Rosario</option>
+            <option value="Castillo">Castillo</option>
+            <option value="Corralejo">Corralejo</option>
+            <option value="Morrojable">Morrojable</option>
+          </select>
           <span className="text-danger">
             {errors.destination}
           </span>
@@ -59,8 +65,8 @@ export default function SearchForm() {
             id="date"
             name="date"
             type="date"
-            value={data.date}
-            onChange={e => setData('date', e.target.value)}
+            value={values.date}
+            onChange={handleChange}
           />
           <span className="text-danger">
             {errors.date}
@@ -71,5 +77,7 @@ export default function SearchForm() {
       </div>
       <div className="row" style={{}}>
       </div>
+
+
     </form>)
 }

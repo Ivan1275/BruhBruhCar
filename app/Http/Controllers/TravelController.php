@@ -23,14 +23,29 @@ class TravelController extends Controller
      */
     public function index()
     {
+        $origin = request()->exists('origin');
+        $destination = request()->exists('destination');
+        $date = request()->exists('date');
+
+        $origin_value = request()->input('origin');
+        $destination_value = request()->input('destination');
+        $date_value = request()->input('date');
+
         $filter = request()->exists('filter');
         $filter_value = request()->input('filter');
         $query = new TravelsQuery;
-        
-        if ($filter) {
-            $travels = $query->getBy($filter_value);
+
+
+        // Search Form
+        if ($origin && $destination && $date) {
+            $travels = $query->searchForm($origin_value, $destination_value, $date_value);
         } else {
-            $travels = $query->getAll();
+            // Filtro 
+            if ($filter) {
+                $travels = $query->getBy($filter_value);
+            } else {
+                $travels = $query->getAll();
+            }
         }
 
         // dd($travels);

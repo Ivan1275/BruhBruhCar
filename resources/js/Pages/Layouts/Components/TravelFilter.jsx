@@ -20,7 +20,7 @@ export default function TravelFilter() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        router.get('/travels?', values) 
+        router.get('/travels', values) 
     }
 
     return (
@@ -32,7 +32,7 @@ export default function TravelFilter() {
                     <option value="">Seleccionar</option>
                     <option value="date">Fecha</option>
                     <option value="hour">Hora de salida</option>
-                    <option value="seats">Hora de salida</option>
+                    <option value="seats">Asientos</option>
                     <option value="price">Precio</option>
                 </select>
             </label>
