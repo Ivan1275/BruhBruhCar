@@ -1,6 +1,6 @@
 // React
-import { usePage, router } from '@inertiajs/react';
-import { Container, Row } from "react-bootstrap";
+import { Link, usePage, router } from '@inertiajs/react';
+import { Container, Row, Button } from "react-bootstrap";
 // import { redirect } from "react-router-dom";
 
 
@@ -14,8 +14,8 @@ export default function ShowProfile() {
 
 
     return (
-    <>
-        <Navigation />
+        <>
+            <Navigation />
 
         <Container>
             {profile == null &&
@@ -45,7 +45,7 @@ export default function ShowProfile() {
             }
         </Container>
 
-        <Footer />
-    </>
+            <Footer />
+        </>
     )
 }
