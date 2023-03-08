@@ -138,7 +138,8 @@ class ProfileController extends Controller
     public function show(User $profile)
     {
        
-        $ratings = $profile->with('myRatings')->where('id', $profile->id)->get();
+        $my_ratings = $profile->with('myRatings')->where('id', $profile->id)->get();
+        $rating_for = $profile->with('ratingFor')->where('id', $profile->id)->get();
 
         $user_id = Auth::id();
         if ($profile->id == $user_id) {
@@ -148,7 +149,7 @@ class ProfileController extends Controller
         if ($profile == null) {
             return Inertia::render('Profile/Show');
         } else {
-            return Inertia::render('Profile/Show', ['profile' => $profile, 'user' => $ratings]);
+            return Inertia::render('Profile/Show', ['profile' => $profile, 'userRatings' => $my_ratings, 'ratingFor' => $rating_for]);
         }
     }
 }
