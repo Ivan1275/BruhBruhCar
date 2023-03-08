@@ -1,5 +1,5 @@
 // React
-import { Container, Row, Alert } from 'react-bootstrap';
+import { Container, Row, Alert, Card } from 'react-bootstrap';
 
 // Components
 import Navigation from './Components/Navigation';
@@ -13,13 +13,19 @@ export default function Authenticated() {
       
       <Container>
         <Row>
-          <div className="text-center pb-3 pt-3">
+          <div className="text-center pt-3">
             <Alert key={'success'} variant={'success'}>
-              ¡Has iniciado sesion con exito! <Alert.Link href="/travels">busca un compañero de viaje</Alert.Link>.
+              ¡Has iniciado sesion con exito! <Alert.Link href="/travels">Busca un compañero de viaje</Alert.Link>.
             </Alert>
           </div>
-          <div className="text-center">
+        </Row>
+        <Row>
+          <Card className="text-center">
             <h2>Busca tu mejor viaje</h2>
+          </Card>
+        </Row>
+        <Row>
+          <div className="text-center pb-3">
             <img src="/assets/img/coie.jpg" className="img-fluid shadow-4" alt="travel"/>
           </div>
         </Row>

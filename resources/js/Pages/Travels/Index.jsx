@@ -52,7 +52,7 @@ export default function Index() {
                           <Card.Body>
                             <Card.Title>Fecha: {new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
                             <Card.Text>
-                              <i className="bi bi-hourglass-split pe-3 p-lg" title="Hora de salida"></i>                              {/* <Moment diff={travel.dtime} unit="seconds" to={travel.atime} */}
+                              <i className="bi bi-hourglass-split pe-3 p-lg" title="Hora de salida"></i>
                               {travel.hour}
                             </Card.Text>
                             <Card.Text>
@@ -84,7 +84,9 @@ export default function Index() {
               ))) : (
               <>
                 <Col className="m-3 pt-3 text-center">
-                  <h2>No se han encontrado viajes. ¡Intentalo de nuevo!</h2>
+                  <Card>
+                    <h2>No se han encontrado viajes. ¡Intentalo de nuevo!</h2>
+                  </Card>
                 </Col>
               </>
             )}

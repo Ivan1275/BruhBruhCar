@@ -74,6 +74,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile/edit/delete', [ProfileController::class, 'show_destroy']);
     Route::post('/profile/edit/delete', [ProfileController::class, 'destroy']);
 
+    // Rutas de Mensajeria y Pagos
+    Route::get('/payments', function () {
+        return Inertia::render('Layouts/Payments');
+    });
+
 });
 
 // Rutas para Usarios que NO esten verificados

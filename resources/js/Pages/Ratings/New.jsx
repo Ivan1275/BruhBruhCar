@@ -1,7 +1,7 @@
 // React
 import React, { useState } from 'react';
 import { router, usePage } from '@inertiajs/react';
-import { Button, Row, Col, Card, Alert, Container } from 'react-bootstrap';
+import { Button, Row, Card, Alert, Container, Form } from 'react-bootstrap';
 
 // Components
 import Navigation from '../Layouts/Components/Navigation';
@@ -31,8 +31,12 @@ export default function New3(props) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(e)
+        console.log(values)
         router.post('/rating/new-rating', values)
+    }
+
+    function getNumber(num) {
+        console.log(num)
     }
 
     return (
@@ -52,43 +56,65 @@ export default function New3(props) {
 
                 <Row className="justify-content-center">
                     <div className="col-md-8 pb-4">
-                        <div className="card">
-                            <div className="card-header text-center">
-                                Realizar una valoracion
-                            </div>
-
-                            <div className="card-body">
-                                <form method="POST" onSubmit={handleSubmit}>
-
-                                    <div className="row mb-3">
-                                        <label htmlFor="score" className="col-md-4 col-form-label text-md-end">Valoración</label>
-
-                                        <div className="col-md-6">
-                                            <input id="score" type="number" className="form-control" name="score" value={values.score} onChange={handleChange} autoComplete="score" />
-                                            {errors.score && <div><strong>{errors.score}</strong></div>}
-                                        </div>
+                        <Card>
+                            <Card.Header className='text-center'><h4>Realizar una valoracion</h4></Card.Header>
+                            <Card.Body>
+                                <Form onSubmit={handleSubmit}>
+                                    {/* Score 2*/}
+                                    <div className="rating">
+                                        <label>
+                                            <input type="radio" name="score" value= '1' id="score"/>
+                                            <span className="icon" onClick={getNumber(1)}>★</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="score" value= '2' id="score"/>
+                                            <span className="icon">★</span>
+                                            <span className="icon" onClick={getNumber(2)}>★</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="score" value= '3' id="score"/>
+                                            <span className="icon">★</span>
+                                            <span className="icon">★</span>
+                                            <span className="icon" onClick={getNumber(3)}>★</span>   
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="score" value= '4' id="score"/>
+                                            <span className="icon">★</span>
+                                            <span className="icon">★</span>
+                                            <span className="icon">★</span>
+                                            <span className="icon" onClick={getNumber(4)}>★</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="score" value= '5' id="score"/>
+                                            <span className="icon">★</span>
+                                            <span className="icon">★</span>
+                                            <span className="icon">★</span>
+                                            <span className="icon">★</span>
+                                            <span className="icon" onClick={getNumber(5)}>★</span>
+                                        </label>
+                                        {errors.score && <div><strong>{errors.score}</strong></div>}
                                     </div>
-
-                                    <div className="row mb-3">
-                                        <label htmlFor="comment" className="col-md-4 col-form-label text-md-end">Comentario</label>
-
-                                        <div className="col-md-6">
-                                            <input id="comment" type="text" className="form-control " name="comment" value={values.comment} onChange={handleChange} autoComplete="comment" />
-                                            {errors.comment && <div><strong>{errors.comment}</strong></div>}
-                                        </div>
-                                    </div>
-
-                                    <div className="row mb-0">
-                                        <div className="col-md-6 offset-md-4">
-                                            <button type="submit" className="btn btn-primary">
-                                                Publicar Valoración
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                </form>
-                            </div>
-                        </div>
+        
+                                    {/* Comentario */}
+                                    <Form.Group className="mb-3">
+                                        <Form.Label htmlFor="comment">Comentario</Form.Label>
+                                        <Form.Control 
+                                            id="comment"
+                                            type="text"
+                                            name="comment"
+                                            value={values.comment}
+                                            onChange={handleChange}
+                                            autoComplete="comment"
+                                            placeholder="Introduce tu comentario"
+                                        />
+                                        {errors.comment && <div><strong>{errors.comment}</strong></div>}
+                                    </Form.Group>
+        
+                                    {/* Submit */}
+                                    <Button type="submit" className="btn btn-primary">Publicar Valoración</Button>
+                                </Form>
+                            </Card.Body>
+                        </Card>
                     </div>
                 </Row>
             </Container>
@@ -97,3 +123,37 @@ export default function New3(props) {
         </>
     );
 }
+
+
+<div className="rating">
+  <label>
+    <input type="radio" name="stars" value="1" />
+    <span className="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="2" />
+    <span className="icon">★</span>
+    <span className="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="3" />
+    <span className="icon">★</span>
+    <span className="icon">★</span>
+    <span className="icon">★</span>   
+  </label>
+  <label>
+    <input type="radio" name="stars" value="4" />
+    <span className="icon">★</span>
+    <span className="icon">★</span>
+    <span className="icon">★</span>
+    <span className="icon">★</span>
+  </label>
+  <label>
+    <input type="radio" name="stars" value="5" />
+    <span className="icon">★</span>
+    <span className="icon">★</span>
+    <span className="icon">★</span>
+    <span className="icon">★</span>
+    <span className="icon">★</span>
+  </label>
+</div>
