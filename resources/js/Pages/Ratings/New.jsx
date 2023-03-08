@@ -94,8 +94,8 @@ export default function New3(props) {
                                             <span className="icon">★</span>
                                             <span className="icon">★</span>
                                         </label>
-                                        {errors.score && <div><strong>{errors.score}</strong></div>}
                                     </div>
+                                    {errors.score && <div><strong>{errors.score}</strong></div>}
         
                                     {/* Comentario */}
                                     <Form.Group className="mb-3">

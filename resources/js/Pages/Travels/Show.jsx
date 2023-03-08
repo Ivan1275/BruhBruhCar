@@ -85,7 +85,7 @@ export default function Show() {
                   <Card.Text>De salida: {travel.hour}</Card.Text>
                   <Card.Text>De llegada: --:-- </Card.Text>
                   <Card.Title>
-                    <p>Chofer: <Link href="#">
+                    <p>Chofer: <Link href={"/profile/show/" + travel.user.id}>
                       {user.name}
                     </Link></p>
                   </Card.Title>

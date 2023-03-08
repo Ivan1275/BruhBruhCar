@@ -48,7 +48,7 @@ export default function Index() {
 
                     <Card.Body>
                       <div className="row no-gutters">
-                        <div className="col-md-6">
+                        <div className="col-md-7">
                           <Card.Body>
                             <Card.Title>Fecha: {new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
                             <Card.Text>
@@ -70,7 +70,7 @@ export default function Index() {
                             </Link>
                           </Card.Body>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-5">
                           <Card.Body>
                             <Card.Title className='text-end'>Precio: {travel.price}€</Card.Title>
                           </Card.Body>

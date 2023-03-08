@@ -9,7 +9,8 @@ class TravelsQuery
     public function getAll()
     {
         $query = Travel::with('user')
-            ->orderBy('created_at', 'asc')
+            ->orderBy('date', 'asc')
+            ->orderBy('hour', 'asc')
             ->get();
 
         return $query;
@@ -19,6 +20,19 @@ class TravelsQuery
     {
         $query = Travel::with('user')
             ->orderBy($filter, 'asc')
+            ->orderBy('date', 'asc')
+            ->orderBy('hour', 'asc')
+            ->get();
+
+        return $query;
+    }
+
+    public function searchForm($origin, $destination, $date)
+    {
+        $query = Travel::with('user')
+            ->where('origin', $origin)
+            ->where('destination', $destination)
+            ->where('date', $date)
             ->get();
 
         return $query;

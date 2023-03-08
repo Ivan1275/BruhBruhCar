@@ -18,7 +18,7 @@ return new class extends Migration
             $table->bigInteger('user1_id')->unsigned();
             $table->bigInteger('user2_id')->unsigned();
             $table->smallInteger('score')->unsigned();
-            $table->text('comment');
+            $table->string('comment', 200);
             $table->timestamps();
 
             $table->foreign('user1_id')->references('id')->on('users');
