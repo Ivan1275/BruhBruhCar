@@ -6,6 +6,7 @@ use App\Models\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\RatingForm;
 use App\Models\User;
 use Inertia\Inertia;
 
@@ -38,7 +39,7 @@ class RatingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RatingForm $request)
     {
         // dd($request);
         Rating::create($request->all());

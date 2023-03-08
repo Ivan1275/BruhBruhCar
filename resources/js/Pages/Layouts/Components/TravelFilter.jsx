@@ -30,10 +30,10 @@ export default function TravelFilter() {
                 Filtrar por:
                 <select id="filter" className='mx-2 p-1' value={values.filter} onChange={handleChange} required >
                     <option value="">Seleccionar</option>
-                    <option value="fecha">Fecha</option>
-                    <option value="hora-salida">Hora de salida</option>
-                    <option value="asientos">Hora de salida</option>
-                    <option value="precio">Precio</option>
+                    <option value="date">Fecha</option>
+                    <option value="hour">Hora de salida</option>
+                    <option value="seats">Hora de salida</option>
+                    <option value="price">Precio</option>
                 </select>
             </label>
             <input type="submit" value="Submit" />

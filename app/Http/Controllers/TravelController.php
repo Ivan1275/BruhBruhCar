@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Travel;
-use App\Models\User;
+use App\Models\Booking;
 use App\Queries\TravelsQuery;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
@@ -26,29 +26,9 @@ class TravelController extends Controller
         $filter = request()->exists('filter');
         $filter_value = request()->input('filter');
         $query = new TravelsQuery;
-
+        
         if ($filter) {
-            switch ($filter_value) {
-                case 'fecha':
-                    $travels = $query->getBy('date');
-                    break;
-
-                case 'hora-salida':
-                    $travels = $query->getBy('hour');
-                    break;
-
-                case 'asientos':
-                    $travels = $query->getBy('seats');
-                    break;
-
-                case 'precio':
-                    $travels = $query->getBy('price');
-                    break;
-
-                default:
-                    $travels = $query->getAll();
-                    break;
-            }
+            $travels = $query->getBy($filter_value);
         } else {
             $travels = $query->getAll();
         }
@@ -123,22 +103,15 @@ class TravelController extends Controller
      */
     public function destroy(Request $request)
     {
-        dd($request); die();
+
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current-password'],
         ]);
-        
-        // $user = $request->user();
-        
-        // Auth::logout();
-        
-        // $user->delete();
-        
-        // $request->session()->invalidate();
-        // $request->session()->regenerateToken();
-        
-        return Redirect::to('/my-travels')->with(Session::flash('errormessage', 'Tu viaje se hubiese borrado correctamente'));
-        
+
+        $travel = Travel::find($request->travel_id);
+        $travel->delete();
+
+        return Redirect::to('/my-travels')->with(Session::flash('errormessage', 'Tu viaje se ha borrado con exito'));
     }
 
     public function personal()
