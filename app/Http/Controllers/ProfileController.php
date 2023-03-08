@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
+use App\Queries\UsersQuery;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,19 +32,47 @@ class ProfileController extends Controller
 
     public function update(ProfileUpdateRequest $request)
     {
-        $request->user()->fill($request->validated());
-
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-
-        $request->user()->save();
         $user = Auth::user();
+        $query = new UsersQuery();
 
-        Session::flash('message', 'Tus datos se han actualizado correctamente');
-        
+        if ($request->hasFile('image')) {
+            // dd($request->hasFile('image')); die();
+            if ($_FILES['image']['type'] == "image/jpeg" || $_FILES["image"]["type"] == "image/png" || $_FILES['image']['type'] == "image/jpg") {
+                $query->updateAvatar($request, $user);
+                Session::flash('message', 'Datos y Avatar actualizados correctamente');
+            } else {
+                Session::flash('errormessage', 'Archivo inválido');
+                return back();
+            }
+        } else{
+            $request->user()->fill($request->validated());
+
+            if ($request->user()->isDirty('email')) {
+                $request->user()->email_verified_at = null;
+            }
+
+            $request->user()->save();
+
+            Session::flash('message', 'Tus datos se han actualizado correctamente');
+        }
+       
         return Inertia::render('Profile/Edit', ['user' => $user]);
     }
+
+    public function avatar(Request $request)
+    {
+        $currentUser = Auth::user();
+        $query = new UsersQuery();
+        if ($_FILES['avatar']['type'] == "image/jpeg" || $_FILES["avatar"]["type"] == "image/png" || $_FILES['avatar']['type'] == "image/jpg") {
+            $query->updateAvatar($request, $currentUser);
+            Session::flash('message', 'Avatar actualizado!');
+        } else {
+            Session::flash('errormessage', 'Archivo inválido');
+            return back();
+        }
+        return back();
+    }
+
 
 
     public function show_update_pswd(Request $request)
@@ -86,7 +115,6 @@ class ProfileController extends Controller
     
     public function destroy(Request $request)
     {
-        // dd($request); die();
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current-password'],
         ]);

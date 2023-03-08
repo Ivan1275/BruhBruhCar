@@ -124,7 +124,7 @@ class TravelController extends Controller
      */
     public function destroy(Request $request)
     {
-        // dd($request); die();
+        dd($request); die();
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current-password'],
         ]);

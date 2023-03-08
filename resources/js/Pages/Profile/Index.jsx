@@ -18,7 +18,10 @@ export default function IndexProfile() {
                 <h2>{auth.user.name}</h2>
             </Row>
             <Row className="justify-content-center pb-3">
-                <Image className="rounded-circle" src="assets/img/testimonials-3.jpg" alt="..." style={{ width: '12.5rem' }}/>
+                {auth.user.avatar == 'avatar.jpg'
+                    ? <Image src='/assets/img/avatar.jpg' alt=" avatar" className="rounded-circle" style={{ width: '12.5rem' }}/>
+                    : <Image src={"/storage/assets/img/" + auth.user.avatar} alt="custom_avatar" className="rounded-circle" style={{ width: '12.5rem' }}/>
+                }
             </Row>
             <Row className="text-center pb-3">
                 <h4>{auth.user.email}</h4>

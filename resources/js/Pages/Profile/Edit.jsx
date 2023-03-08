@@ -1,5 +1,5 @@
 // React
-import { router, usePage } from '@inertiajs/react'
+import { router, usePage, useForm } from '@inertiajs/react'
 import React, { useState } from 'react';
 import { Button, Form, Card, Container, Nav, Row, Alert } from "react-bootstrap"
 
@@ -12,10 +12,34 @@ export default function EditProfile() {
     const { flash } = usePage().props;
     const { errors } = usePage().props;
 
+    console.log(auth.user.avatar)
+    
+    // const { data, setData } = useForm({
+    //     avatar: null,
+    // });
+    // const src = 'storage/assets/img/';
+
+    function previewFile(e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        console.log(file.name)
+        reader.readAsText(file);
+
+
+        setForm({ image: file });
+
+
+        reader.onerror = () => {
+            console.log('fileerror');
+        }
+    }
+
+
     
     const [values, setForm] = useState({
         name: auth.user.name,
-        email: auth.user.email
+        email: auth.user.email,
+        image: null
     })
   
     function handleChange(e) {
@@ -94,9 +118,32 @@ export default function EditProfile() {
                                             />
                                             {errors.email && <div><strong>{errors.email}</strong></div>}
                                         </Form.Group>
+
+                                        {/* Img */}
+                                        <Form.Group className="mb-3">
+                                            <Form.Label htmlFor="image">Avatar</Form.Label>
+                                            <Form.Control 
+                                                id="image"
+                                                type="file"
+                                                name="image"
+                                                encType="multipart/form-data"
+                                                onChange={previewFile}
+                                                autoComplete="image"
+                                                placeholder="Introduce tu nuevo avatar"
+                                            />
+                                            {errors.image && <div><strong>{errors.image}</strong></div>}
+                                        </Form.Group>
+
+                                        <Row className="text-center justify-content-center pb-3">
+                                            <h5>Avatar actual</h5>
+                                            {auth.user.avatar == 'avatar.jpg'
+                                                ? <img src='/assets/img/avatar.jpg' alt=" avatar" className="rounded-circle" style={{ width: '7.5rem' }}/>
+                                                : <img src={"/storage/assets/img/" + auth.user.avatar} alt="custom_avatar" className="rounded-circle" style={{ width: '7.5rem' }}/>
+                                            }
+                                        </Row>
         
                                         {/* Submit */}
-                                        <Button type="submit" className="btn btn-primary">Iniciar sesión</Button>
+                                        <Button type="submit" className="btn btn-primary">Confirmar</Button>
                                     </Form>
                                 </Card.Body>
                             </Card>

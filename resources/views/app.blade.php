@@ -8,6 +8,17 @@
     @viteReactRefresh
     @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
     @inertiaHead
+
+    <style>
+        body {
+            background-image: url('assets/img/movi_sostenible.png'),
+            linear-gradient(to bottom, #ffffff 10%, #0066ff 132%);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: contain;
+        }
+    </style>
 </head>
 
 <body>

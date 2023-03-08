@@ -10,6 +10,7 @@ import Footer from '../Layouts/Components/Footer';
 
 export default function ShowProfile() {
     const { profile } = usePage().props;
+    const { auth } = usePage().props;
 
 
     return (
@@ -32,7 +33,10 @@ export default function ShowProfile() {
                         <h2>{profile.name}</h2>
                     </Row>
                     <Row className="justify-content-center pb-3">
-                        <img src="/assets/img/testimonials-2.jpg" className="rounded-circle" alt="..." style={{ width: '12.5rem' }}/>
+                    {auth.user.avatar == 'avatar.jpg'
+                        ? <img src='/assets/img/avatar.jpg' alt=" avatar" className="rounded-circle" style={{ width: '12.5rem' }}/>
+                        : <img src={"/storage/assets/img/" + auth.user.avatar} alt="custom_avatar" className="rounded-circle" style={{ width: '12.5rem' }}/>
+                    }
                     </Row>
                     <Row className="text-center pb-3">
                         <h4>{profile.email}</h4>

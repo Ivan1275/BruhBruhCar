@@ -25,17 +25,19 @@ export default function Show() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [values, setForm] = useState({
-      password: ""
-  })
   
   function submit(e) {
     e.preventDefault()
     console.log(travel);
     post('/bookings', travel)
   }
-
+  
   // Borrar travel
+  const [values, setForm] = useState({
+      password: "",
+      travel_id: travel.id,
+  });
+
   function handleChange(e) {
     const key = e.target.id;
     const value = e.target.value
@@ -75,7 +77,7 @@ export default function Show() {
             <div className="row no-gutters">
               <div className="col-md-6">
                 <Card.Body>
-                  <Card.Title> Trayecto: {travel.origin}<i className="bi bi-arrow-right"></i> {travel.destination} </Card.Title>
+                  <Card.Title>Trayecto: {travel.origin}<i className="bi bi-arrow-right"></i> {travel.destination} </Card.Title>
                   <Card.Title>Fecha: {new Date(travel.date).toLocaleDateString("es-ES")}</Card.Title>
 
                   <Card.Title>Horario</Card.Title>
