@@ -35,6 +35,11 @@ export default function IndexProfile() {
                         <a href="/profile/edit" className="btn btn-primary btn-block btn-lg">Cambiar datos del perfil</a>
                     </div>
                 </Row>
+                <Row className="text-center pt-3 pb-3">
+                    <div className="d-grid">
+                        <a href="/profile/my-ratings/send" className="btn btn-secondary btn-block btn-lg">Ver valoraciones</a>
+                    </div>
+                </Row>
         </Container>
 
         <Footer />

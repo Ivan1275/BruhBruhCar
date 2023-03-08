@@ -73,6 +73,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/profile/edit/update-password', [ProfileController::class, 'update_pswd']);
     Route::get('/profile/edit/delete', [ProfileController::class, 'show_destroy']);
     Route::post('/profile/edit/delete', [ProfileController::class, 'destroy']);
+    Route::get('/profile/my-ratings/send', [ProfileController::class, 'show_my_ratings']);
+    Route::get('/profile/my-ratings/recieve', [ProfileController::class, 'show_users_ratings']);
 
     // Rutas de Mensajeria y Pagos
     Route::get('/payments', function () {

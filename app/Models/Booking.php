@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\NewBooking;
+
 
 class Booking extends Model
 {
@@ -56,5 +58,10 @@ class Booking extends Model
         // Resto una plaza a los asientos disponibles
         $travel->seats = $travel->seats - 1;
         $travel->save();
+
+        // Envía correo al propietario del coche
+        // $travel->user->notify(new NewBooking($booking));
+        // Envía correo al usuario que hace la reserva            
+        // User::find(Auth::id())->notify(new NewBooking($booking));
     }
 }

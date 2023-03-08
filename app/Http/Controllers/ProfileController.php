@@ -152,4 +152,32 @@ class ProfileController extends Controller
             return Inertia::render('Profile/Show', ['profile' => $profile, 'userRatings' => $my_ratings, 'ratingFor' => $rating_for]);
         }
     }
+
+
+    public function show_users_ratings()
+    {
+       
+        $user_id = Auth::id();
+        $user = User::find($user_id);
+        
+        $my_ratings = $user->with('myRatings')->where('id', $user->id)->get();
+
+        // dd($my_ratings); die();
+
+        return Inertia::render('Profile/Recieve', ['profile' => $user, 'userRatings' => $my_ratings]);
+    }
+
+
+    public function show_my_ratings()
+    {
+       
+        $user_id = Auth::id();
+        $user = User::find($user_id);
+        
+        $rating_for = $user->with('ratingFor')->where('id', $user->id)->get();
+
+        // dd($rating_for); die();
+
+        return Inertia::render('Profile/Send', ['profile' => $user, 'ratingFor' => $rating_for]);
+    }
 }
