@@ -17,7 +17,6 @@ class TravelsQuery
 
     public function getBy($filter)
     {
-        
         $query = Travel::with('user')
             ->orderBy($filter, 'asc')
             ->get();

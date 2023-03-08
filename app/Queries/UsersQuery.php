@@ -11,7 +11,6 @@ class UsersQuery
     {
         $carpeta = 'public/assets/img/';
         $imagen = $request->file('image');
-        // dd($imagen); die();
         $nombre_imagen = $imagen->getClientOriginalName();
         $request->file('image')->storeAs($carpeta, $nombre_imagen);
     
