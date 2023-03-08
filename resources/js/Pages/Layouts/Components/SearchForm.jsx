@@ -37,6 +37,8 @@ export default function SearchForm() {
             <option value="Castillo">Castillo</option>
             <option value="Corralejo">Corralejo</option>
             <option value="Morrojable">Morrojable</option>
+            <option value="Gran Tarajal">Gran Tarajal</option>
+            <option value="Playa Blanca">Playa Blanca</option>
           </select>
           <span className="text-danger">
             {errors.origin}
@@ -52,6 +54,8 @@ export default function SearchForm() {
             <option value="Castillo">Castillo</option>
             <option value="Corralejo">Corralejo</option>
             <option value="Morrojable">Morrojable</option>
+            <option value="Gran Tarajal">Gran Tarajal</option>
+            <option value="Playa Blanca">Playa Blanca</option>
           </select>
           <span className="text-danger">
             {errors.destination}

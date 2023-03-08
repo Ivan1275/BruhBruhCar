@@ -73,6 +73,8 @@ export default function New3(props) {
                                                 <option value="Castillo">Castillo</option>
                                                 <option value="Corralejo">Corralejo</option>
                                                 <option value="Morrojable">Morrojable</option>
+                                                <option value="Gran Tarajal">Gran Tarajal</option>
+                                                <option value="Playa Blanca">Playa Blanca</option>
                                             </select>
                                             {errors.origin && <div><strong>{errors.origin}</strong></div>}
                                         </div>
@@ -88,6 +90,8 @@ export default function New3(props) {
                                                 <option value="Castillo">Castillo</option>
                                                 <option value="Corralejo">Corralejo</option>
                                                 <option value="Morrojable">Morrojable</option>
+                                                <option value="Gran Tarajal">Gran Tarajal</option>
+                                                <option value="Playa Blanca">Playa Blanca</option>
                                             </select>
                                             {errors.destination && <div><strong>{errors.destination}</strong></div>}
                                         </div>
