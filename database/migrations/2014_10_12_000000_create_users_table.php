@@ -23,7 +23,7 @@ return new class extends Migration
             $table->boolean('admin')->default(0);
             $table->boolean('blocked')->default(0);
             $table->boolean('validated')->default(0);
-            $table->string('avatar', 255);
+            $table->string('avatar', 255)->default('avatar.jpg');
             $table->double('coupon')->nullable();
             $table->rememberToken();
             $table->timestamps();

@@ -20,8 +20,8 @@ class ProfileController extends Controller
         $user = Auth::user();
         return Inertia::render('Profile/Index', ['user' => $user]);
     }
-   
-    
+
+
     public function edit(Request $request)
     {
         // dump($request->user()->profile());
@@ -44,7 +44,7 @@ class ProfileController extends Controller
                 Session::flash('errormessage', 'Archivo inválido');
                 return back();
             }
-        } else{
+        } else {
             $request->user()->fill($request->validated());
 
             if ($request->user()->isDirty('email')) {
@@ -55,7 +55,7 @@ class ProfileController extends Controller
 
             Session::flash('message', 'Tus datos se han actualizado correctamente');
         }
-       
+
         return Inertia::render('Profile/Edit', ['user' => $user]);
     }
 
@@ -92,7 +92,7 @@ class ProfileController extends Controller
 
 
         #Match The Old Password
-        if(!Hash::check($request->old_password, auth()->user()->password)){
+        if (!Hash::check($request->old_password, auth()->user()->password)) {
             return back()->with("errormessage", "Old Password Doesn't match!");
         }
 
@@ -112,7 +112,7 @@ class ProfileController extends Controller
         return Inertia::render('Profile/Delete', ['user' => $user]);
     }
 
-    
+
     public function destroy(Request $request)
     {
         $request->validateWithBag('userDeletion', [
@@ -122,7 +122,7 @@ class ProfileController extends Controller
         $user = $request->user();
 
         // $real_user = User::where('user_id', $user->id)->get();
-        
+
 
         Auth::logout();
 
@@ -133,20 +133,22 @@ class ProfileController extends Controller
 
         return Redirect::to('/')->with(Session::flash('errormessage', 'Tu usuario se ha borrado correctamente'));
     }
-    
-    
+
+
     public function show(User $profile)
     {
+       
+        $ratings = $profile->with('myRatings')->where('id', $profile->id)->get();
+
         $user_id = Auth::id();
-        if($profile->id == $user_id){
+        if ($profile->id == $user_id) {
             return redirect('/profile');
         }
-        
-        if($profile == null){
+
+        if ($profile == null) {
             return Inertia::render('Profile/Show');
-        } else{
-            return Inertia::render('Profile/Show', ['profile' => $profile]);
+        } else {
+            return Inertia::render('Profile/Show', ['profile' => $profile, 'user' => $ratings]);
         }
-        
     }
 }

@@ -1,7 +1,7 @@
 // React
 import { Link, router, usePage, useForm } from '@inertiajs/react'
 import React, { useState } from 'react';
-import { Button, Form, Card, Container, Nav, Row, Modal } from "react-bootstrap"
+import { Button, Form, Card, Container, Nav, Row, Modal, Alert } from "react-bootstrap"
 
 // Components
 import Navigation from '../Layouts/Components/Navigation';
