@@ -15,7 +15,7 @@ export default function Footer() {
               <li className="list-inline-item">⋅</li>
               <li className="list-inline-item"><Link href="#!">Política de privacidad</Link></li>
             </ul>
-            <p className="text-muted small mb-4 mb-lg-0">© MoviFP 2023. Todos los derechos reservados.</p>
+            <p className="text-muted small mb-4 mb-lg-0">© MoviFP 2023. Todos los derechos reservados a Iván Orea Mataloni y Joel Armas Battaglia.</p>
           </div>
           <div className="col-lg-6 h-100 text-center text-lg-end my-auto">
             <ul className="list-inline mb-0">
