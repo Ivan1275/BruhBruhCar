@@ -56,8 +56,8 @@ export default function ShowProfile() {
                 <div className="row justify-content-center">
                     <Row className='text-center bg-info'><h2>Comentarios de los usuarios</h2></Row>
                     <Row xs={1} md={3} className="g-2 justify-content-center">
-                        {ratingFor[0].rating_for.length ? (
-                            ratingFor[0].rating_for.map((user) => (
+                        {userRatings[0].my_ratings.length ? (
+                            userRatings[0].my_ratings.map((user) => (
 
                                 <Col>
                                     <Card className='shadow'>
