@@ -34,7 +34,7 @@ export default function ShowProfile() {
                             <h2>{profile.name}</h2>
                         </Row>
                         <Row className="justify-content-center pb-3">
-                            {auth.user.avatar == 'avatar.jpg'
+                            {profile.avatar == 'avatar.jpg'
                                 ? <img src='/assets/img/avatar.jpg' alt=" avatar" className="rounded-circle" style={{ width: '12.5rem' }} />
                                 : <img src={"/storage/assets/img/" + auth.user.avatar} alt="custom_avatar" className="rounded-circle" style={{ width: '12.5rem' }} />
                             }

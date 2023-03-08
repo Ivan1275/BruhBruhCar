@@ -27,16 +27,18 @@ export default function New3(props) {
             ...values,
             [key]: value,
         }))
+        if(key == 'score1' || key == 'score2' || key == 'score3' || key == 'score4' || key == 'score5'){
+            setForm(values => ({
+                ...values,
+                score: e.target.value,
+            }))
+        }
     }
 
     function handleSubmit(e) {
         e.preventDefault()
         console.log(values)
         router.post('/rating/new-rating', values)
-    }
-
-    function getNumber(num) {
-        console.log(num)
     }
 
     return (
@@ -63,34 +65,34 @@ export default function New3(props) {
                                     {/* Score 2*/}
                                     <div className="rating">
                                         <label>
-                                            <input type="radio" name="score" value= '1' id="score"/>
-                                            <span className="icon" onClick={getNumber(1)}>★</span>
+                                            <input type="radio" name="score" value='1' onChange={handleChange} id="score1"/>
+                                            <span className="icon">★</span>
                                         </label>
                                         <label>
-                                            <input type="radio" name="score" value= '2' id="score"/>
+                                            <input type="radio" name="score" value='2' onChange={handleChange} id="score2"/>
                                             <span className="icon">★</span>
-                                            <span className="icon" onClick={getNumber(2)}>★</span>
+                                            <span className="icon">★</span>
                                         </label>
                                         <label>
-                                            <input type="radio" name="score" value= '3' id="score"/>
+                                            <input type="radio" name="score" value='3' onChange={handleChange} id="score3"/>
                                             <span className="icon">★</span>
                                             <span className="icon">★</span>
-                                            <span className="icon" onClick={getNumber(3)}>★</span>   
+                                            <span className="icon">★</span>   
                                         </label>
                                         <label>
-                                            <input type="radio" name="score" value= '4' id="score"/>
+                                            <input type="radio" name="score" value='4' onChange={handleChange} id="score4"/>
                                             <span className="icon">★</span>
                                             <span className="icon">★</span>
                                             <span className="icon">★</span>
-                                            <span className="icon" onClick={getNumber(4)}>★</span>
+                                            <span className="icon">★</span>
                                         </label>
                                         <label>
-                                            <input type="radio" name="score" value= '5' id="score"/>
+                                            <input type="radio" name="score" value='5' onChange={handleChange} id="score5"/>
                                             <span className="icon">★</span>
                                             <span className="icon">★</span>
                                             <span className="icon">★</span>
                                             <span className="icon">★</span>
-                                            <span className="icon" onClick={getNumber(5)}>★</span>
+                                            <span className="icon">★</span>
                                         </label>
                                         {errors.score && <div><strong>{errors.score}</strong></div>}
                                     </div>
