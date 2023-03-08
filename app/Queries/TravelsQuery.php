@@ -27,12 +27,22 @@ class TravelsQuery
         return $query;
     }
 
-    public function searchForm($origin, $destination, $date)
+    public function searchFormAll($origin, $destination, $date)
     {
         $query = Travel::with('user')
             ->where('origin', $origin)
             ->where('destination', $destination)
             ->where('date', $date)
+            ->get();
+
+        return $query;
+    }
+
+    public function searchForm($origin, $destination)
+    {
+        $query = Travel::with('user')
+            ->where('origin', $origin)
+            ->where('destination', $destination)
             ->get();
 
         return $query;

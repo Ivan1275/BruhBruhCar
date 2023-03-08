@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Travel;
 use App\Models\Booking;
+use App\Models\User;
 use App\Queries\TravelsQuery;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
@@ -35,18 +36,24 @@ class TravelController extends Controller
         $filter_value = request()->input('filter');
         $query = new TravelsQuery;
 
+        // Filtro 
+        if ($filter) {
+            $travels = $query->getBy($filter_value);
+        } else {
+            $travels = $query->getAll();
+        }
 
         // Search Form
-        if ($origin && $destination && $date) {
-            $travels = $query->searchForm($origin_value, $destination_value, $date_value);
-        } else {
-            // Filtro 
-            if ($filter) {
-                $travels = $query->getBy($filter_value);
-            } else {
-                $travels = $query->getAll();
-            }
-        }
+        if ($date && $date_value == null) {
+            $travels = $query->searchForm($origin_value, $destination_value);
+        } 
+        
+        if ($date && $date_value !== null){
+            $travels = $query->searchFormall($origin_value, $destination_value, $date_value);
+        } 
+        
+    
+        
 
         // dd($travels);
         return Inertia::render('Travels/Index', ['travels' => $travels]);
@@ -83,8 +90,16 @@ class TravelController extends Controller
     public function show(Travel $travel)
     {
         // dd($travel); die();
+        
+        $booking = Booking::firstOrNew([
+            'user_id' => Auth::id(),
+            'travel_id' => $travel->id
+        ]);
+
+        // dd($booking);
+
         $user = $travel->user;
-        return Inertia::render('Travels/Show', ['travel' => $travel, 'user' => $user]);
+        return Inertia::render('Travels/Show', ['travel' => $travel, 'user' => $user, 'booking' => $booking]);
     }
 
     /**

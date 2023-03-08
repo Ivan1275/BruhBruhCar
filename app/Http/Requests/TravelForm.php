@@ -26,10 +26,10 @@ class TravelForm extends FormRequest
         return [
             'origin' => 'required|max:45', // max 45 caracteres
             'destination' => 'required|max:45', // max 45 caracteres
-            'date' => 'required',
+            'date' => 'required|after:now',
             'hour' => 'required',
             'seats' => 'required|gt:0', // el numero de asientos debe ser mayor a 0
-            'price' => 'required|gt:0' // el numero de asientos debe ser mayor a 0
+            'price' => 'required|gt:0|max:250' // el numero de asientos debe ser mayor a 0
         ];
     }
 }
