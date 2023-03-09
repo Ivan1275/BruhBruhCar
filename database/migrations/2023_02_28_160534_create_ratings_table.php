@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('comment', 200);
             $table->timestamps();
 
-            $table->foreign('user1_id')->references('id')->on('users');
-            $table->foreign('user2_id')->references('id')->on('users');
+            $table->foreign('user1_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user2_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

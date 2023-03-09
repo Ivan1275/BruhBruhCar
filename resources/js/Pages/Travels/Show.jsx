@@ -13,7 +13,6 @@ export default function Show() {
   const { travel } = usePage().props;
   const { auth } = usePage().props;
   const { user } = usePage().props;
-  const { booking } = usePage().props;
   const { flash } = usePage().props;
   
   const { post } = useForm({ //Para poder pasarle el travel id y descontar un asiento
@@ -99,26 +98,12 @@ export default function Show() {
                     />
 
                     { // Si el usuario actual es el creador del travel
-                      booking.id
-                        // Se desactiva el boton
-                        ? <Button variant="danger" onClick={handleShow}>quitar</Button>
-                        // Si no, permanece activo
-                        : <Button variant="primary" type="submit">confirmar</Button>
-                    }
-
-                    {/* { // Si el usuario actual es el creador del travel
                       travel.user_id == auth.user.id 
                         // Se desactiva el boton
                         ? <Button variant="danger" onClick={handleShow}>BORRAR</Button>
                         // Si no, permanece activo
-                        : (                    // Si el usuario actual es el creador del travel
-                          booking.id
-                            // Se desactiva el boton
-                            ? <Button variant="danger" onClick={handleShow}>quitar</Button>
-                            // Si no, permanece activo
-                            : <Button variant="primary" type="submit">confirmar</Button>
-                        )
-                    }  */}
+                        : <Button variant="primary" type="submit">Confirmar</Button>
+                    }
 
                   </form>
                 </Card.Body>

@@ -10,14 +10,14 @@
     @inertiaHead
 
     <style>
-        body {
+        /* body {
             background-image: url('assets/img/movi_sostenible.png'),
             linear-gradient(to bottom, #ffffff 10%, #0066ff 132%);
             background-repeat: no-repeat;
             background-position: center;
             background-attachment: fixed;
             background-size: contain;
-        }
+        } */
     </style>
 </head>
 
