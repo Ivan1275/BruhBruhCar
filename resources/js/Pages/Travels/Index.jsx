@@ -1,6 +1,7 @@
 // React
+import React, { useState } from 'react';
 import { Link, usePage } from '@inertiajs/react';
-import { Button, Row, Col, Card, Alert } from 'react-bootstrap';
+import { Button, Row, Col, Card, Alert, ToastContainer, Toast } from 'react-bootstrap';
 
 // Components
 import Navigation from '../Layouts/Components/Navigation';
@@ -14,18 +15,26 @@ export default function Index() {
   const { flash } = usePage().props;
   const { travels } = usePage().props;
 
+  const [show, setShow] = useState(true);
+  const toggleShow = () => setShow(!show);
+
+  flash.message = "hola buena tarde";
+
+
+  console.log(travels);
+
 
   return (
     <>
       <Navigation />
 
-      <div className="pt-2">
+      {/* <div className="pt-2">
         {flash.message && (
           <Alert key={'success'} variant={'success'}>
             <div className="text-center">{flash.message}</div>
           </Alert>
         )}
-      </div>
+      </div> */}
 
       <div className="pt-2">
         {flash.errormessage && (
@@ -41,8 +50,8 @@ export default function Index() {
         <div className="row justify-content-center">
           <Row xs={1} md={3} className="g-2 justify-content-center">
             {travels.length ? (
-              travels.map(travel => (
-                <Col>
+              travels.map((travel, index) => (
+                <Col key={index}>
                   <Card className='shadow'>
                     <Card.Header as="h4" className="p-3 rounded">Ruta: {travel.origin} <i className="bi bi-arrow-right"></i> {travel.destination}</Card.Header>
 
@@ -92,6 +101,23 @@ export default function Index() {
             )}
           </Row>
         </div>
+        {flash.message && (
+        <>
+          <ToastContainer className="p-3" position="top-end">
+            <Toast bg="success" show={show} onClose={toggleShow} delay={5000} autohide>
+              <Toast.Header>
+                <img
+                  src="holder.js/20x20?text=%20"
+                  className="rounded me-2"
+                  alt="" />
+                <strong className="me-auto">MoviFP</strong>
+              </Toast.Header>
+              <Toast.Body>{flash.message}</Toast.Body>
+
+            </Toast>
+          </ToastContainer>
+        </>
+        )}
       </div>
       <Footer />
     </>
